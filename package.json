@@ -1,0 +1,68 @@
+{
+  "name": "www.dickwyn.xyz",
+  "description": "Dickwyn's website",
+  "version": "4.0.0-alpha",
+  "author": "Dick Wyn Yong <dickwyn@outlook.com>",
+  "license": "MIT",
+  "homepage": "https://dickwyn.xyz/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dickwyn/v4"
+  },
+  "bugs": {
+    "url": "https://github.com/dickwyn/v4/issues"
+  },
+  "private": true,
+  "dependencies": {
+    "next": "10.2.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "sass": "^1.32.12"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.4",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "eslint": "^7.25.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^6.0.0",
+    "lint-staged": "^10.5.4",
+    "prettier": "^2.2.1",
+    "typescript": "^4.2.4"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint ./src/*",
+    "lint:fix": "eslint ./src/* --fix",
+    "prettier": "prettier --check ./src/*",
+    "prettier:fix": "prettier --write ./src/*"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.(mdx|json|js|ts|tsx)": [
+      "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "eslint --fix"
+    ]
+  },
+  "keywords": [
+    "dickwyn",
+    "dick wyn yong",
+    "website",
+    "portfolio",
+    "blog"
+  ]
+}
