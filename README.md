@@ -1,21 +1,42 @@
-# v4
+# Portfolio Blog Starter
 
-## Running the Project
+This is a porfolio site template complete with a blog. Includes:
 
-```sh
-git clone https://github.com/dickwyn/v4.git
-cd v4
-yarn install
-yarn dev
+- MDX and Markdown support
+- Optimized for SEO (sitemap, robots, JSON-LD schema)
+- RSS Feed
+- Dynamic OG images
+- Syntax highlighting
+- Tailwind v4
+- Vercel Speed Insights / Web Analytics
+- Geist font
+
+## Demo
+
+https://portfolio-blog-starter.vercel.app
+
+## How to Use
+
+You can choose from one of the following two methods to use this repository:
+
+### One-Click Deploy
+
+Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/examples/tree/main/solutions/blog&project-name=blog&repository-name=blog)
+
+### Clone and Deploy
+
+Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [pnpm](https://pnpm.io/installation) to bootstrap the example:
+
+```bash
+pnpm create next-app --example https://github.com/vercel/examples/tree/main/solutions/blog blog
 ```
 
-## Older variations
+Then, run Next.js in development mode:
 
-1. [V1](https://github.com/dickwyn/v1)
-2. [V2](https://github.com/dickwyn/v2)
-3. [Blog](https://github.com/dickwyn/blog)
-4. [V3](https://github.com/dickwyn/v3)
+```bash
+pnpm dev
+```
 
-## License
-
-The contents of this repository are covered under the [MIT License](https://github.com/dickwyn/v4/blob/main/LICENSE).
+Deploy it to the cloud with [Vercel](https://vercel.com/templates) ([Documentation](https://nextjs.org/docs/app/building-your-application/deploying)).
