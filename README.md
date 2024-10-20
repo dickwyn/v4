@@ -1,6 +1,6 @@
 # v4
 
-## Pre-requisites
+## Prerequisites
 
 - **Node.js**: LTS version
 - [**pnpm**](https://pnpm.io/installation)
