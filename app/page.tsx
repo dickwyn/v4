@@ -1,21 +1,37 @@
-import { BlogPosts } from 'app/components/posts'
+import { BlogPosts } from 'app/components/posts';
 
 export default function Page() {
   return (
     <section>
-      <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
-        My Portfolio
+      <h1 className="mb-8 text-2xl">
+        Dick Wyn <b>Yong</b>
       </h1>
-      <p className="mb-4">
-        {`I'm a Vim enthusiast and tab advocate, finding unmatched efficiency in
-        Vim's keystroke commands and tabs' flexibility for personal viewing
-        preferences. This extends to my support for static typing, where its
-        early error detection ensures cleaner code, and my preference for dark
-        mode, which eases long coding sessions by reducing eye strain.`}
-      </p>
-      <div className="my-8">
-        <BlogPosts />
-      </div>
+      <section className="grid gap-2">
+        <p>
+          i'm a software engineer at{' '}
+          <a href="https://microsoft.com" target="_blank" rel="noopener noreferrer">
+            Microsoft
+          </a>
+        </p>
+        <p>
+          i was born and raised in malaysia and got my computer science degree from{' '}
+          <a href="https://www.asu.edu/" target="_blank" rel="noopener noreferrer">
+            ASU
+          </a>
+        </p>
+        <p>
+          also, i upload videos on my{' '}
+          <a href="https://www.youtube.com/dickwyn" target="_blank" rel="noopener noreferrer">
+            YouTube
+          </a>{' '}
+          channel about how technology gets applied in my everyday life
+        </p>
+        <p>
+          my weekly schedule minus sleeping comprises 20% coding, 10% meetings, 10% cooking, 30%
+          video production, 25% learning
+        </p>
+        <p>i like consumer technology, airplanes, photography and eating + cooking chicken rice</p>
+      </section>
     </section>
-  )
+  );
 }
