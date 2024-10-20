@@ -30,7 +30,7 @@ export default function Uses() {
   return (
     <div className="content-container with-padding">
       <p>
-        From casual web browsing to creating content for YouTube, here's a comprehensive list of
+        From casual web browsing to creating content for YouTube, here&apos;s a comprehensive list of
         hardware and software that I use on a daily basis to create and consume content.
       </p>
       <p>I enjoy trying out new things so this list will be updated accordingly.</p>

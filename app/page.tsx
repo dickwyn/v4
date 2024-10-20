@@ -1,5 +1,3 @@
-import { BlogPosts } from 'app/components/posts';
-
 export default function Page() {
   return (
     <section>
@@ -8,7 +6,7 @@ export default function Page() {
       </h1>
       <section className="grid gap-2">
         <p>
-          i'm a software engineer at{' '}
+          i&apos;m a software engineer at{' '}
           <a href="https://microsoft.com" target="_blank" rel="noopener noreferrer">
             Microsoft
           </a>
