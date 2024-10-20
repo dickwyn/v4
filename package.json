@@ -1,5 +1,16 @@
 {
-  "private": true,
+  "name": "www.dickwyn.xyz",
+  "description": "Dickwyn's website",
+  "version": "4.0.0-alpha",
+  "author": "Dick Wyn Yong <dickwyn@outlook.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dickwyn/v4"
+  },
+  "bugs": {
+    "url": "https://github.com/dickwyn/v4/issues"
+  },
+  "homepage": "https://dickwyn.xyz",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
