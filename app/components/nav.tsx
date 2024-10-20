@@ -22,7 +22,7 @@ export function Navbar() {
           id="nav"
         >
           <div className="flex flex-row space-x-0 pr-10">
-            <Link href="/" className="home py-1 px-2 m-1">
+            <Link href="/" className="home flex items-center py-1 px-2 m-1">
               <Image
                 src="/images/brand/logo-light.svg"
                 alt="dickwyn's icon"
