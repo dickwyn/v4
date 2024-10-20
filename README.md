@@ -14,7 +14,7 @@ pnpm install
 pnpm dev
 ```
 
-## Legacy variations
+## Legacy versions
 
 1. [v1](https://github.com/dickwyn/v1)
 2. [v2](https://github.com/dickwyn/v2)
