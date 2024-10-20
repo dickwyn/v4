@@ -1,5 +1,20 @@
 @import 'tailwindcss';
 
+:root {
+  --font-inter: 'Inter', sans-serif;
+  --font-fira-code: 'Fira Code', monospace;
+}
+
+body {
+  font-family: var(--font-inter);
+}
+
+code,
+pre {
+  font-family: var(--font-fira-code);
+  font-weight: 700;
+}
+
 ::selection {
   background-color: #47a3f3;
   color: #fefefe;
