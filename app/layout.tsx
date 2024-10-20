@@ -1,35 +1,48 @@
-'use client';
-
 import './global.css';
 
-import { ReactNode, useEffect } from 'react';
+import { ReactNode } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import type { Metadata } from 'next';
 
 import Footer from './components/footer';
 import { Navbar } from './components/nav';
+import { SiteInfo } from './components/siteInfo';
+import { baseUrl } from './sitemap';
+
+export const metadata: Metadata = {
+  metadataBase: new URL(baseUrl),
+  title: {
+    default: 'Dick Wyn Yong',
+    template: '%s | Dick Wyn Yong',
+  },
+  description:
+    'Dick Wyn is a software engineer and content creator. He is a Malaysian living in America and enjoys experimenting with new recipes in the kitchen and geeking out on the latest tech gadgets.',
+  openGraph: {
+    title: 'Dick Wyn Yong',
+    description:
+      'Dick Wyn is a software engineer and content creator. He is a Malaysian living in America and enjoys experimenting with new recipes in the kitchen and geeking out on the latest tech gadgets.',
+    url: baseUrl,
+    siteName: 'Dick Wyn Yong',
+    locale: 'en_US',
+    type: 'website',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+};
 
 const cx = (...classes) => classes.filter(Boolean).join(' ');
 
 export default function Layout({ children }: { children: ReactNode }) {
-  useEffect(() => {
-    if (process.env.NODE_ENV === 'production') {
-      console.log(
-        `
-%cDick Wyn Yong's Portfolio vAPP_VERSION
-  
-Looking for something?
-  
-👨‍💻 https://www.github.com/dickwyn
-📄 https://dickwyn.xyz/dickwyn-resume.pdf
-🐛 https://dickwyn.xyz/debug
-  
-built: unsetTimestamp`,
-        'font-family:monospace;'
-      );
-    }
-  }, []);
-
   return (
     <html lang="en" className={cx('text-black bg-white dark:text-wh~ite dark:bg-black')}>
       <head>
@@ -42,6 +55,7 @@ built: unsetTimestamp`,
       </head>
       <body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto">
         <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
+          <SiteInfo />
           <Navbar />
           {children}
           <Footer />
