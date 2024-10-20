@@ -6,8 +6,8 @@ import { ReactNode, useEffect } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
-import { Navbar } from './components/nav';
 import Footer from './components/footer';
+import { Navbar } from './components/nav';
 
 const cx = (...classes) => classes.filter(Boolean).join(' ');
 

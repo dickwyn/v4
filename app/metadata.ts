@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+
 import { baseUrl } from './sitemap';
 
 export const metadata: Metadata = {

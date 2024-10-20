@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+
 import { uses } from './uses';
 
 export default function Uses() {
@@ -30,8 +31,8 @@ export default function Uses() {
   return (
     <div className="content-container with-padding">
       <p>
-        From casual web browsing to creating content for YouTube, here&apos;s a comprehensive list of
-        hardware and software that I use on a daily basis to create and consume content.
+        From casual web browsing to creating content for YouTube, here&apos;s a comprehensive list
+        of hardware and software that I use on a daily basis to create and consume content.
       </p>
       <p>I enjoy trying out new things so this list will be updated accordingly.</p>
       {uses.map((section, sectionIndex) => (

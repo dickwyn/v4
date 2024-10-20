@@ -15,6 +15,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "prettify": "prettier --write \"**/*.{ts,tsx,json,mdx}\"",
     "lint": "eslint ."
   },
   "dependencies": {
@@ -35,6 +36,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
+    "@ianvs/prettier-plugin-sort-imports": "^4.3.1",
     "eslint": "^9.13.0",
     "eslint-plugin-react": "^7.37.1",
     "globals": "^15.11.0",
