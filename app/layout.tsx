@@ -9,15 +9,15 @@ import { baseUrl } from './sitemap';
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'Next.js Portfolio Starter',
-    template: '%s | Next.js Portfolio Starter',
+    default: 'Dick Wyn Yong',
+    template: '%s | Dick Wyn Yong',
   },
-  description: 'This is my portfolio.',
+  description: 'Dick Wyn is a software engineer and content creator. He is a Malaysian living in America and enjoys experimenting with new recipes in the kitchen and geeking out on the latest tech gadgets.',
   openGraph: {
-    title: 'My Portfolio',
-    description: 'This is my portfolio.',
+    title: 'Dick Wyn Yong',
+    description: 'Dick Wyn is a software engineer and content creator. He is a Malaysian living in America and enjoys experimenting with new recipes in the kitchen and geeking out on the latest tech gadgets.',
     url: baseUrl,
-    siteName: 'My Portfolio',
+    siteName: 'Dick Wyn Yong',
     locale: 'en_US',
     type: 'website',
   },
