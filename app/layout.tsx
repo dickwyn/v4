@@ -44,7 +44,7 @@ const cx = (...classes) => classes.filter(Boolean).join(' ');
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={cx('text-black bg-white dark:text-wh~ite dark:bg-black')}>
+    <html lang="en" className={cx('text-black bg-white dark:text-white dark:bg-black')}>
       <head>
         <link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
