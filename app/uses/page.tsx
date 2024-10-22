@@ -4,16 +4,31 @@ import { uses } from './uses';
 
 export default function Uses() {
   const ItemList = ({ items, parentIndex }) => (
-    <ul>
+    <ul className="list-disc pl-5">
       {items.map((item, itemIndex) => (
         <Fragment key={`item${itemIndex}`}>
-          <li key={`parent${parentIndex}-item${itemIndex}`}>
-            {item.url ? <a href={item.url}>{item.name}</a> : item.name}
+          <li key={`parent${parentIndex}-item${itemIndex}`} className="mb-2">
+            {item.url ? (
+              <a href={item.url} className="text-blue-500 hover:underline">
+                {item.name}
+              </a>
+            ) : (
+              item.name
+            )}
             {item.attributeList && (
-              <ul>
+              <ul className="list-disc pl-5">
                 {item.attributeList.map((attribute, attributeIndex) => (
-                  <li key={`parent${parentIndex}-item${itemIndex}-attribute${attributeIndex}`}>
-                    {attribute.url ? <a href={attribute.url}>{attribute.name}</a> : attribute.name}
+                  <li
+                    key={`parent${parentIndex}-item${itemIndex}-attribute${attributeIndex}`}
+                    className="mb-1"
+                  >
+                    {attribute.url ? (
+                      <a href={attribute.url} className="text-blue-500 hover:underline">
+                        {attribute.name}
+                      </a>
+                    ) : (
+                      attribute.name
+                    )}
                   </li>
                 ))}
               </ul>
@@ -29,7 +44,7 @@ export default function Uses() {
   };
 
   return (
-    <div className="content-container with-padding">
+    <div className="flex flex-col gap-y-3">
       <p>
         From casual web browsing to creating content for YouTube, here&apos;s a comprehensive list
         of hardware and software that I use on a daily basis to create and consume content.
@@ -37,7 +52,7 @@ export default function Uses() {
       <p>I enjoy trying out new things so this list will be updated accordingly.</p>
       {uses.map((section, sectionIndex) => (
         <Fragment key={`section${sectionIndex}`}>
-          <h2 className="section">{section.name}</h2>
+          <h2 className="font-semibold text-2xl mt-5 mb-3 border-b-3">{section.name}</h2>
           <p>{section.description}</p>
           {section.categoryList &&
             section.categoryList.map((category, categoryIndex) => (
