@@ -21,21 +21,7 @@ export const uses = [
           },
         ],
       },
-      {
-        name: 'Powecom KN95 Respirator Face Mask',
-        url: 'https://bonafidemasks.com/Powecom-kn-95/',
-        attributeList: [
-          {
-            name: 'I pair it with these Ursa Maskies for all-day comfort',
-            url: 'https://smile.amazon.com/gp/product/B08NXG8DD8?psc=1',
-          },
-          {
-            name: 'Previously used the Hedley & Bennett Wake Up and Fight Mask',
-            url: 'https://youtu.be/Yc53Yg2xY6Y',
-          },
-        ],
-      },
-      { name: 'Galaxy Buds Pro' },
+      { name: 'AirPods Pro 2' },
       {
         name: 'Mission Workshop The Rummy Messenger Bag',
         attributeList: [
@@ -47,28 +33,10 @@ export const uses = [
           },
         ],
       },
+      { name: 'Apple iPhone 16 Pro Max' },
       {
-        name: 'Samsung Galaxy S22 Ultra',
-        attributeList: [
-          {
-            name: 'Check out my first impressions video',
-            url: 'https://youtu.be/hxbOaLf4sRA',
-          },
-        ],
-      },
-      {
-        name: 'Samsung Galaxy Watch4',
-        attributeList: [
-          { name: '44mm Silver' },
-          {
-            name: 'DaQin Stretchy Nylon Band (Plum)',
-            url: 'https://amazon.com/gp/product/B09JW6W84L',
-          },
-          {
-            name: 'Watch my full review of this smartwatch',
-            url: 'https://youtu.be/ZN9mA3_JG7E',
-          },
-        ],
+        name: 'Apple Watch Series 9',
+        attributeList: [{ name: 'Aluminum 45mm Silver' }, { name: 'Nike Sport Loop' }],
       },
       {
         name: 'Zojirushi 600ml Stainless Steel Mug',
@@ -77,15 +45,7 @@ export const uses = [
           { name: "The best water bottle I've used. Keeps cold water cold and hot water hot." },
         ],
       },
-      { name: 'Galaxy SmartTag+' },
-      {
-        name: 'Roav Sunglasses',
-        url: 'https://roaveyewear.com/collections/origin-series/products/freddy-black-moonrise',
-        attributeList: [
-          { name: 'Freddy frame/shape in Black/Sunrise colorway.' },
-          { name: 'These are durable, lightweight and folds into my pocket.' },
-        ],
-      },
+      { name: 'Apple AirTag' },
     ],
   },
   {
@@ -195,27 +155,8 @@ export const uses = [
           {
             name: 'Sony a7 IV (A-Camera)',
             attributeList: [
-              { name: 'Sigma 24-70mm f/2.8 DG DN (Sony E)' },
+              { name: 'Sony FE PZ 16-34mm f/4 G' },
               { name: '256GB ProGrade Digital V60 SD Card' },
-            ],
-          },
-          {
-            name: 'Panasonic Lumix G9 (B-Camera)',
-            attributeList: [
-              { name: 'Sigma 18-35mm f/1.8 DC (Canon EF)' },
-              { name: 'Viltrox EF-M2 II' },
-              { name: 'SmallRig Lens Adapter Support' },
-              { name: '128GB SanDisk Extreme PRO SD Card' },
-              { name: 'SmallRig Cage (2125)' },
-              { name: 'Portkeys P6' },
-            ],
-          },
-          {
-            name: 'Panasonic Lumix GH4 (C-Camera)',
-            attributeList: [
-              { name: 'Olympus 12-40mm f/2.8 PRO' },
-              { name: '128GB SanDisk Extreme PRO SD Card' },
-              { name: 'Manfrotto 200PL Quick Release Plate' },
             ],
           },
           {
@@ -283,18 +224,12 @@ export const uses = [
         ],
       },
       {
-        name: 'camera',
-        sort: true,
-        list: [{ name: 'Canon AE-1 Program' }],
-      },
-      {
         name: 'lenses',
         sort: true,
         list: [
-          { name: 'Canon 50mm f/1.4 FD' },
-          { name: 'Helios 44-2 58mm f/2.0' },
-          { name: 'Panasonic 7-14mm f/4.0' },
+          { name: 'Sigma 24-70mm f/2.8 DG DN (Sony E)' },
           { name: 'Sony 90mm f/2.8 Macro' },
+          { name: 'Helios 44-2 58mm f/2.0' },
         ],
       },
       {
@@ -314,7 +249,7 @@ export const uses = [
         sort: true,
         list: [
           { name: 'Giottos Rocket Air Blaster' },
-          { name: 'Peak Design Slide Lite' },
+          { name: 'Peak Design Slide' },
           { name: 'Pelican SD Memory Card Case' },
           { name: 'Neewer 43-inch Light Reflector 5-in-1' },
           { name: 'Peak Design Camera Cube' },
@@ -342,16 +277,12 @@ export const uses = [
         list: [
           { name: 'Affinity Photo' },
           { name: 'Davinci Resolve Studio' },
-          { name: 'Figma' },
           { name: 'Google Chrome' },
           { name: 'Malwarebytes' },
           { name: 'Microsoft Office' },
           { name: 'Spotify' },
           { name: 'Visual Studio Code' },
           { name: 'WhatsApp' },
-          { name: 'Logi Options+' },
-          { name: 'Microsoft To Do' },
-          { name: 'Microsoft Edge' },
           { name: 'FreeFileSync' },
           { name: 'f.lux' },
           { name: 'iZotope RX 8' },
@@ -365,15 +296,8 @@ export const uses = [
           { name: 'Alfred 4' },
           { name: 'iTerm' },
           { name: 'MacTeX' },
-          { name: 'Magnet' },
-          { name: 'iStat Menus' },
           { name: 'AppCleaner' },
           { name: 'Pixelmator Pro' },
-          { name: 'DevSwatch' },
-          { name: 'IINA' },
-          { name: 'Hidden Bar' },
-          { name: 'Karabiner-Elements' },
-          { name: 'Muzzle' },
         ],
       },
       {
@@ -395,22 +319,14 @@ export const uses = [
         sort: true,
         list: [
           { name: '1Password X Beta' },
-          { name: 'GoFullPage - Full Page Screen Capture' },
-          { name: 'Grammarly' },
           { name: 'META SEO inspector' },
           { name: 'React Developer Tools' },
           { name: 'uBlock Origin' },
-          { name: 'vidIQ Vision for YouTube' },
           { name: 'Wappalyzer' },
-          { name: 'WAVE Evaluation Tool' },
-          { name: 'Decentraleyes' },
-          { name: 'Disconnect' },
           { name: 'The Camelizer' },
           { name: 'ClearURLs' },
-          { name: 'Honey' },
           { name: 'Return YouTube Dislike' },
           { name: 'SponsorBlock for YouTube' },
-          { name: 'Webtime Tracker' },
         ],
       },
       {
@@ -427,7 +343,6 @@ export const uses = [
           { name: 'Prettier' },
           { name: 'Rainglow' },
           { name: 'Todo Tree' },
-          { name: 'Quokka.js' },
         ],
       },
     ],
