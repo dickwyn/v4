@@ -9,7 +9,7 @@ export const uses = [
         name: 'Breadband Wallet',
         attributeList: [
           {
-            name: 'Tile Slim (2020)',
+            name: 'KeySmart SmartCard',
           },
           {
             name: 'Check out other wallets that I like',
@@ -22,30 +22,18 @@ export const uses = [
         ],
       },
       { name: 'AirPods Pro 2' },
-      {
-        name: 'Mission Workshop The Rummy Messenger Bag',
-        attributeList: [
-          {
-            name: "The most expensive messenger bag I have bought but it's totally worth it.",
-          },
-          {
-            name: "Extremely durable and it's weather proof.",
-          },
-        ],
-      },
       { name: 'Apple iPhone 16 Pro Max' },
       {
         name: 'Apple Watch Series 9',
         attributeList: [{ name: 'Aluminum 45mm Silver' }, { name: 'Nike Sport Loop' }],
       },
       {
-        name: 'Zojirushi 600ml Stainless Steel Mug',
-        url: 'https://www.amazon.com/gp/product/B00HYOGUM2?psc=1',
+        name: 'Zojirushi SM-VA60WA Vacuum Bottle 20oz',
+        url: 'https://a.co/d/ekz2lY5',
         attributeList: [
           { name: "The best water bottle I've used. Keeps cold water cold and hot water hot." },
         ],
       },
-      { name: 'Apple AirTag' },
     ],
   },
   {
@@ -93,16 +81,7 @@ export const uses = [
           { name: 'Herman Miller Aeron' },
           { name: 'Elgato Wave Panels' },
           {
-            name: 'Dell U2720Q 27-inch Monitor',
-            attributeList: [
-              {
-                name: 'Upgraded from my trusty Dell U2415.',
-                url: 'https://twitter.com/dickwyn/status/1433207786528075781',
-              },
-              {
-                name: 'I got this so that I can natively master/edit my YouTube videos on this 10-bit 4K panel.',
-              },
-            ],
+            name: 'LG 38WN95C-W Monitor 38" 21:9',
           },
           {
             name: 'BenQ ScreenBar Plus',
@@ -121,7 +100,7 @@ export const uses = [
               { name: 'I have these sitting on top of sound isolation pads from Sound Addicted.' },
             ],
           },
-          { name: 'Logitech MX Anywhere 3' },
+          { name: 'Logitech Signature M650 L' },
           {
             name: 'Happy Hacking Keyboard (HHKB) Professional HYBRID Type-S',
             url: 'https://happyhackingkb.com/',
@@ -140,13 +119,7 @@ export const uses = [
             name: 'Stack Overflow The Key Macropad',
             url: 'https://drop.com/buy/stack-overflow-the-key-macropad',
           },
-          { name: 'DaVinci Resolve Speed Editor' },
-          {
-            name: 'Samsung Wireless Charger Pad 9W',
-            attributeList: [{ name: 'Charges both my smartwatch and smartphone.' }],
-          },
           { name: 'Tripp Lite 10 Outlet Surge Protector' },
-          { name: 'Anker 40W 5-port USB Wall Charger' },
         ],
       },
       {
@@ -282,7 +255,6 @@ export const uses = [
           { name: 'Microsoft Office' },
           { name: 'Spotify' },
           { name: 'Visual Studio Code' },
-          { name: 'WhatsApp' },
           { name: 'FreeFileSync' },
           { name: 'f.lux' },
           { name: 'iZotope RX 8' },
@@ -293,11 +265,11 @@ export const uses = [
         name: 'mac',
         sort: true,
         list: [
-          { name: 'Alfred 4' },
-          { name: 'iTerm' },
+          { name: 'Raycast' },
           { name: 'MacTeX' },
           { name: 'AppCleaner' },
           { name: 'Pixelmator Pro' },
+          { name: 'Shottr' },
         ],
       },
       {
@@ -318,13 +290,12 @@ export const uses = [
         name: 'chrome extensions',
         sort: true,
         list: [
-          { name: '1Password X Beta' },
+          { name: '1Password' },
           { name: 'META SEO inspector' },
           { name: 'React Developer Tools' },
           { name: 'uBlock Origin' },
           { name: 'Wappalyzer' },
           { name: 'The Camelizer' },
-          { name: 'ClearURLs' },
           { name: 'Return YouTube Dislike' },
           { name: 'SponsorBlock for YouTube' },
         ],
