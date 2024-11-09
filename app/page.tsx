@@ -18,15 +18,15 @@ export default function Page() {
           </a>
         </p>
         <p>
-          also, i upload videos on my{' '}
+          i&apos;m currently into running and plane photography but i used to upload videos on my{' '}
           <a href="https://www.youtube.com/dickwyn" target="_blank" rel="noopener noreferrer">
             YouTube
           </a>{' '}
-          channel about how technology gets applied in my everyday life
+          channel about how technology gets applied in my everyday life.
         </p>
         <p>
-          my weekly schedule minus sleeping comprises 20% coding, 10% meetings, 10% cooking, 30%
-          video production, 25% learning
+          my weekly schedule minus sleeping comprises 30% coding, 10% meetings, 10% cooking, 30%
+          watching youtube, and 20% running (plus exercising)
         </p>
         <p>i like consumer technology, airplanes, photography and eating + cooking chicken rice</p>
       </section>
