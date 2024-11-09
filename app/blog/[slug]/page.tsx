@@ -81,7 +81,7 @@ export default function Blog({ params }) {
           {formatDate(post.metadata.date)}
         </p>
       </div>
-      <article className="prose">
+      <article className="blog">
         <CustomMDX source={post.content} />
       </article>
     </section>
