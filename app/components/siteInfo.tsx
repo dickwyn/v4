@@ -2,12 +2,14 @@
 
 import { useEffect } from 'react';
 
+import packageJson from '../../package.json';
+
 export function SiteInfo() {
   useEffect(() => {
     if (process.env.NODE_ENV === 'production') {
       console.log(
         `
-    %cDick Wyn Yong's Portfolio vAPP_VERSION
+    %cDick Wyn Yong's Portfolio v${packageJson.version}
       
     Looking for something?
       
