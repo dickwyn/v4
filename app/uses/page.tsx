@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import Link from 'next/link';
 
 import { uses } from './uses';
 
@@ -8,13 +9,7 @@ export default function Uses() {
       {items.map((item, itemIndex) => (
         <Fragment key={`item${itemIndex}`}>
           <li key={`parent${parentIndex}-item${itemIndex}`} className="mb-2">
-            {item.url ? (
-              <a href={item.url} className="text-blue-500 hover:underline">
-                {item.name}
-              </a>
-            ) : (
-              item.name
-            )}
+            {item.url ? <Link href={item.url}>{item.name}</Link> : item.name}
             {item.attributeList && (
               <ul className="list-disc pl-5">
                 {item.attributeList.map((attribute, attributeIndex) => (
@@ -23,9 +18,7 @@ export default function Uses() {
                     className="mb-1"
                   >
                     {attribute.url ? (
-                      <a href={attribute.url} className="text-blue-500 hover:underline">
-                        {attribute.name}
-                      </a>
+                      <Link href={attribute.url}>{attribute.name}</Link>
                     ) : (
                       attribute.name
                     )}

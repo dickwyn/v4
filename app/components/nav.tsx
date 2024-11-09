@@ -27,7 +27,10 @@ export function Navbar() {
           id="nav"
         >
           <div className="flex flex-row space-x-0 pr-10">
-            <Link href="/" className="home flex items-center py-1 px-2 m-1">
+            <Link
+              href="/"
+              className="home flex items-center py-1 px-2 m-1 hover:bg-black dark:hover:bg-white"
+            >
               <Image
                 src={`/images/brand/logo-${colorScheme}.svg`}
                 alt="dickwyn's icon"
@@ -40,7 +43,7 @@ export function Navbar() {
                 <Link
                   key={path}
                   href={path}
-                  className="transition-all hover:underline underline-offset-3 hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle relative py-1 px-2 m-1"
+                  className="transition-all flex align-middle relative py-1 px-2 m-1"
                 >
                   {name}
                 </Link>

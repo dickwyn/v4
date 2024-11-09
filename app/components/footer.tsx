@@ -20,7 +20,7 @@ export default function Footer() {
         {links.map((link, index) => (
           <li key={index}>
             <a
-              className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100 hover:underline underline-offset-3"
+              className="flex items-center transition-all"
               rel="noopener noreferrer"
               target="_blank"
               href={link.href}

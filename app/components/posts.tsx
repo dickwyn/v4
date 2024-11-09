@@ -14,8 +14,12 @@ export function BlogPosts() {
           return 1;
         })
         .map((post) => (
-          <Link key={post.slug} href={`/blog/${post.slug}`}>
-            <div className="w-full flex flex-col space-x-0">
+          <Link
+            key={post.slug}
+            href={`/blog/${post.slug}`}
+            className="blog-link hover:border-solid border-2 border-transparent rounded-lg"
+          >
+            <div className="">
               <p className="text-sm text-neutral-600 dark:text-neutral-400">
                 {formatDate(post.metadata.date, false)}
               </p>
