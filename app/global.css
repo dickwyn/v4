@@ -165,20 +165,17 @@ table {
 }
 
 a {
-  text-decoration: underline;
-  text-decoration-color: #d84c4c;
-  text-underline-offset: 3px;
+  @apply underline decoration-[#d84c4c] underline-offset-3;
 }
 
 a:hover {
-  text-decoration: none;
-  color: #d84c4c;
+  @apply no-underline text-[#d84c4c];
 }
 
 a.blog-link {
-  text-decoration: none;
+  @apply no-underline;
 }
 
 a.blog-link:hover {
-  border-color: #d84c4c;
+  @apply border-[#d84c4c];
 }
