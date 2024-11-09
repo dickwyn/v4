@@ -9,15 +9,15 @@ export function SiteInfo() {
     if (process.env.NODE_ENV === 'production') {
       console.log(
         `
-    %cDick Wyn Yong's Portfolio v${packageJson.version}
+%cDick Wyn Yong's Portfolio v${packageJson.version}
       
-    Looking for something?
+Looking for something?
       
-    👨‍💻 https://www.github.com/dickwyn
-    📄 https://dickwyn.xyz/dickwyn-resume.pdf
-    🐛 https://dickwyn.xyz/debug
-    
-    built: ${process.env.BUILD_TIMESTAMP}`,
+👨‍💻 https://www.github.com/dickwyn
+📄 https://dickwyn.xyz/dickwyn-resume.pdf
+🐛 https://dickwyn.xyz/debug
+
+built: ${process.env.BUILD_TIMESTAMP}`,
         'font-family:monospace;'
       );
     }
