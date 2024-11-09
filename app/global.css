@@ -163,3 +163,7 @@ table {
 .title {
   text-wrap: balance;
 }
+
+a {
+  text-decoration-color: #d84c4c;
+}
