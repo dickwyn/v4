@@ -1,7 +1,7 @@
 export default function Page() {
   return (
     <section>
-      <h1 className="mb-8 text-2xl">
+      <h1 className="mb-5 text-3xl">
         Dick Wyn <b>Yong</b>
       </h1>
       <section className="grid gap-2">
