@@ -14,8 +14,7 @@ export function SiteInfo() {
     👨‍💻 https://www.github.com/dickwyn
     📄 https://dickwyn.xyz/dickwyn-resume.pdf
     🐛 https://dickwyn.xyz/debug
-      
-    built: unsetTimestamp`,
+    built: ${process.env.BUILD_TIMESTAMP}`,
         'font-family:monospace;'
       );
     }
