@@ -29,6 +29,9 @@ export default function Page() {
           watching youtube, and 20% running (plus exercising)
         </p>
         <p>i like consumer technology, airplanes, photography and eating + cooking chicken rice</p>
+        <p className="mt-3 italic">
+          p.s. i don&apos;t have a middle name, my first name has two words (Dick Wyn).
+        </p>
       </section>
     </section>
   );
