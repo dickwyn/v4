@@ -1,4 +1,4 @@
-export const uses = [
+export const things = [
   {
     name: 'every day carry',
     description:

@@ -4,18 +4,7 @@ import usePrefersColorScheme from 'app/hooks/usePrefersColorScheme';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const navItems = {
-  '/blog': {
-    name: 'blog',
-  },
-  // '/things': {
-  //   name: 'things',
-  // },
-  '/uses': {
-    name: 'gear',
-  },
-};
-
+const navItems = ['blog', 'things'];
 export function Navbar() {
   const colorScheme = usePrefersColorScheme();
 
@@ -38,14 +27,14 @@ export function Navbar() {
                 height={12}
               />
             </Link>
-            {Object.entries(navItems).map(([path, { name }]) => {
+            {navItems.map((navItem) => {
               return (
                 <Link
-                  key={path}
-                  href={path}
+                  key={navItem}
+                  href={`/${navItem}`}
                   className="transition-all flex align-middle relative py-1 px-2 m-1"
                 >
-                  {name}
+                  {navItem}
                 </Link>
               );
             })}
