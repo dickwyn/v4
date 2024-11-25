@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og';
 
 export function GET(request: Request) {
   const url = new URL(request.url);
-  const title = url.searchParams.get('title') || 'Dick Wyn Yong';
+  const title = url.searchParams.get('title') || 'Dickwyn Yong';
 
   return new ImageResponse(
     (
