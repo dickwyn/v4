@@ -4,6 +4,14 @@ const links = [
     label: 'bluesky',
   },
   {
+    href: 'https://instagram.com/dickwyn',
+    label: 'instagram',
+  },
+  {
+    href: 'https://youtube.com/dickwyn',
+    label: 'youtube',
+  },
+  {
     href: 'https://www.linkedin.com/in/dickwyn',
     label: 'linkedin',
   },
