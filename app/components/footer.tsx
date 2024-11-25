@@ -1,7 +1,7 @@
 const links = [
   {
-    href: 'https://twitter.com/dickwyn',
-    label: 'x (twitter)',
+    href: 'https://bsky.app/profile/dickwyn.xyz',
+    label: 'bluesky',
   },
   {
     href: 'https://www.linkedin.com/in/dickwyn',
