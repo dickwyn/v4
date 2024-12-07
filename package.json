@@ -1,7 +1,7 @@
 {
   "name": "www.dickwyn.xyz",
   "description": "Dickwyn's website",
-  "version": "4.0.0-beta",
+  "version": "4.1.0-beta",
   "author": "Dick Wyn Yong <dickwyn@outlook.com>",
   "repository": {
     "type": "git",
