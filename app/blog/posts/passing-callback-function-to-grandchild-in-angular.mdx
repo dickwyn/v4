@@ -11,7 +11,7 @@ tags:
   - tutorial
 ---
 
-Recently, I was refactoring some Angular components and I stumbled upon an issue of passing a callback function from a grandparent to the child component. Up to that point in time, I have only passed callback functions from the parent to the child by using the `@Output()` decorator and the `EventEmitter` class.
+Recently, I was refactoring some Angular components and I stumbled upon an issue of passing a callback function from a grandparent to the child component. Up to that point in time, I have only passed callback functions from the parent to the child by using the `@Output()` decorator and the `EventEmitter` className.
 
 ### Premise
 
@@ -58,7 +58,7 @@ ERROR Error: @Output primaryButtonCallback not initialized in 'CtaAlertComponent
 So, then I decided to conditionally initialize the `@Output()` decorator with an `EventEmitter` only if a callback function was passed from the grandparent component. But that didn't work as I was continuously getting the following error.
 
 ```javascript
-export class CtaAlertComponent implements OnInit {
+export className CtaAlertComponent implements OnInit {
   @Output() dismissButtonCallback?: EventEmitter<any>;
 
   constructor() {
@@ -94,7 +94,7 @@ import { Component } from '@angular/core';
     <app-cta-alert [dismissButtonCallback]="customCallback"></app-cta-alert>
   `,
 })
-export class AppComponent {
+export className AppComponent {
   customCallback(): void {
     console.log('firing from app component');
   }
@@ -116,7 +116,7 @@ import { Component, OnInit, Input } from '@angular/core';
     </app-base-alert>
   `,
 })
-export class CtaAlertComponent implements OnInit {
+export className CtaAlertComponent implements OnInit {
   @Input() dismissButtonCallback?: any;
 
   isCallbackPassed: boolean;
@@ -169,7 +169,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
     `,
   ],
 })
-export class BaseAlertComponent {
+export className BaseAlertComponent {
   @Input() dismissButtonText?: string = 'Close';
 
   @Input() overrideDismissButton?: boolean = false;
