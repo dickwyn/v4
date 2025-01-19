@@ -25,7 +25,7 @@ export const things = [
       { name: 'Apple iPhone 16 Pro Max' },
       {
         name: 'Apple Watch Series 9',
-        attributeList: [{ name: 'Aluminum 45mm Silver' }, { name: 'Nike Sport Loop' }],
+        attributeList: [{ name: 'Aluminum 45mm Silver' }, { name: 'Braided Solo Loop Starlight' }],
       },
       {
         name: 'Zojirushi SM-VA60WA Vacuum Bottle 20oz',
