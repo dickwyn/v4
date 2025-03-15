@@ -1,8 +1,7 @@
 export const things = [
   {
     name: 'every day carry',
-    description:
-      'These are the things that I have with me if I am going outside.',
+    description: 'These are the things that I have with me if I am going outside.',
     sort: true,
     itemList: [
       {
@@ -21,8 +20,9 @@ export const things = [
           },
         ],
       },
+      { name: 'LTT Commuter Backpack' },
       { name: 'AirPods Pro 2' },
-      { name: 'Apple iPhone 16 Pro Max' },
+      { name: 'Apple iPhone 16 Pro Max', attributeList: [{ name: 'dbrand Ghost Case 2.0' }] },
       {
         name: 'Apple Watch Series 9',
         attributeList: [{ name: 'Aluminum 45mm Silver' }, { name: 'Braided Solo Loop Starlight' }],
@@ -264,13 +264,7 @@ export const things = [
       {
         name: 'mac',
         sort: true,
-        list: [
-          { name: 'Raycast' },
-          { name: 'MacTeX' },
-          { name: 'AppCleaner' },
-          { name: 'Pixelmator Pro' },
-          { name: 'Shottr' },
-        ],
+        list: [{ name: 'Raycast' }, { name: 'MacTeX' }, { name: 'Shottr' }],
       },
       {
         name: 'windows',
@@ -291,12 +285,9 @@ export const things = [
         sort: true,
         list: [
           { name: '1Password' },
-          { name: 'META SEO inspector' },
           { name: 'React Developer Tools' },
-          { name: 'uBlock Origin' },
-          { name: 'Wappalyzer' },
+          { name: 'uBlock Origin Lit' },
           { name: 'The Camelizer' },
-          { name: 'Return YouTube Dislike' },
           { name: 'SponsorBlock for YouTube' },
         ],
       },
@@ -304,7 +295,6 @@ export const things = [
         name: 'visual studio code extensions',
         sort: true,
         list: [
-          { name: 'Better Comments' },
           { name: 'Code Spell Checker' },
           { name: 'GitLens' },
           { name: 'LaTeX Workshop' },
