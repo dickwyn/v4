@@ -8,7 +8,8 @@ export const things = [
         name: 'Breadband Wallet',
         attributeList: [
           {
-            name: 'KeySmart SmartCard',
+            name: 'Apple AirTag Card for Wallet',
+            url: 'https://rovistech.com/products/slim-airtag-card',
           },
           {
             name: 'Check out other wallets that I like',
@@ -79,7 +80,6 @@ export const things = [
             ],
           },
           { name: 'Herman Miller Aeron' },
-          { name: 'Elgato Wave Panels' },
           {
             name: 'LG 38WN95C-W Monitor 38" 21:9',
           },
@@ -89,10 +89,6 @@ export const things = [
           },
           {
             name: 'Amazon Basics Single Monitor Stand',
-            attributeList: [
-              { name: 'Paired with an Amazon Basics Notebook Laptop Stand Arm Mount Tray.' },
-              { name: 'I use this to prop up my laptop.' },
-            ],
           },
           {
             name: 'PreSonus Eris E3.5 studio monitors',
@@ -100,26 +96,12 @@ export const things = [
               { name: 'I have these sitting on top of sound isolation pads from Sound Addicted.' },
             ],
           },
-          { name: 'Logitech Signature M650 L' },
+          { name: 'Logitech Lift Left' },
           {
-            name: 'Happy Hacking Keyboard (HHKB) Professional HYBRID Type-S',
-            url: 'https://happyhackingkb.com/',
-            attributeList: [
-              {
-                name: 'KBDFans Blank White and Gray PBT Keycaps',
-                url: 'https://mechanicalkeyboards.com/shop/index.php?l=product_detail&p=6809',
-              },
-              {
-                name: 'Check out my full review of this keyboard',
-                url: 'https://youtu.be/jG-0pFJ1oNE',
-              },
-            ],
-          },
-          {
-            name: 'Stack Overflow The Key Macropad',
-            url: 'https://drop.com/buy/stack-overflow-the-key-macropad',
+            name: 'Kinesis mWave for Mac',
           },
           { name: 'Tripp Lite 10 Outlet Surge Protector' },
+          { name: 'Logitech Brio 4K' },
         ],
       },
       {
@@ -173,9 +155,6 @@ export const things = [
           {
             name: 'Aputure Accent B7c LED RGBWW Light',
           },
-          {
-            name: 'GVM 480LS Bi-color LED Light',
-          },
           { name: 'Elvid 9-Section Acrylic Production Slate with Color Clapper Sticks' },
           { name: 'X-Rite ColorChecker Passport Video' },
           {
@@ -203,6 +182,7 @@ export const things = [
           { name: 'Sigma 24-70mm f/2.8 DG DN (Sony E)' },
           { name: 'Sony 90mm f/2.8 Macro' },
           { name: 'Helios 44-2 58mm f/2.0' },
+          { name: 'Sony 16-35mm f/4 G PZ' },
         ],
       },
       {
@@ -269,7 +249,7 @@ export const things = [
       {
         name: 'windows',
         sort: true,
-        list: [{ name: 'MiKTeX' }, { name: 'PhotoScape' }, { name: 'Windows Terminal' }],
+        list: [{ name: 'MiKTeX' }, { name: 'Windows Terminal' }],
       },
       {
         name: 'android',
@@ -286,7 +266,7 @@ export const things = [
         list: [
           { name: '1Password' },
           { name: 'React Developer Tools' },
-          { name: 'uBlock Origin Lit' },
+          { name: 'uBlock Origin Lite' },
           { name: 'The Camelizer' },
           { name: 'SponsorBlock for YouTube' },
         ],
