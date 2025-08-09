@@ -24,8 +24,8 @@ export default function Page() {
           </a>
         </p>
         <p>
-          right now, i&apos;m all about running—working my way up to a marathon. i used to share how
-          technology impacts my everyday life on my{' '}
+          right now, i&apos;m all about weightlifting and running—working my way up to a marathon. i
+          used to share how technology impacts my everyday life on my{' '}
           <a href="https://www.youtube.com/dickwyn" target="_blank" rel="noopener noreferrer">
             YouTube
           </a>{' '}
