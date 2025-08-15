@@ -4,9 +4,12 @@ import path from 'path';
 type Metadata = {
   title: string;
   date: string;
-  summary: string;
+  summary?: string;
+  description?: string;
   subtitle?: string;
   image?: string;
+  slug: string;
+  draft?: boolean;
 };
 
 function parseFrontmatter(fileContent: string) {
@@ -15,13 +18,21 @@ function parseFrontmatter(fileContent: string) {
   const frontMatterBlock = match![1];
   const content = fileContent.replace(frontmatterRegex, '').trim();
   const frontMatterLines = frontMatterBlock.trim().split('\n');
-  const metadata: Partial<Metadata> = {};
+  const metadata: Record<string, unknown> = {};
 
   frontMatterLines.forEach((line) => {
     const [key, ...valueArr] = line.split(': ');
     let value = valueArr.join(': ').trim();
     value = value.replace(/^['"](.*)['"]$/, '$1'); // Remove quotes
-    metadata[key.trim() as keyof Metadata] = value;
+
+    // Handle boolean values
+    if (value === 'true') {
+      metadata[key.trim()] = true;
+    } else if (value === 'false') {
+      metadata[key.trim()] = false;
+    } else {
+      metadata[key.trim()] = value;
+    }
   });
 
   return { metadata: metadata as Metadata, content };
@@ -51,7 +62,7 @@ function getMDXData(dir) {
 }
 
 export function getBlogPosts() {
-  return getMDXData(path.join(process.cwd(), 'app', 'blog', 'posts'));
+  return getMDXData(path.join(process.cwd(), 'content', 'posts'));
 }
 
 export function formatDate(date: string, includeRelative = false) {

@@ -18,15 +18,16 @@ export async function generateMetadata(props) {
     return;
   }
 
-  const { title, date: publishedTime, summary: description, image } = post.metadata;
+  const { title, date: publishedTime, summary, description, image } = post.metadata;
+  const postDescription = summary || description;
   const ogImage = image ? image : `${baseUrl}/og?title=${encodeURIComponent(title)}`;
 
   return {
     title,
-    description,
+    description: postDescription,
     openGraph: {
       title,
-      description,
+      description: postDescription,
       type: 'article',
       publishedTime,
       url: `${baseUrl}/blog/${post.slug}`,
@@ -39,7 +40,7 @@ export async function generateMetadata(props) {
     twitter: {
       card: 'summary_large_image',
       title,
-      description,
+      description: postDescription,
       images: [ogImage],
     },
   };
@@ -65,7 +66,7 @@ export default async function Blog(props) {
             headline: post.metadata.title,
             datePublished: post.metadata.date,
             dateModified: post.metadata.date,
-            description: post.metadata.summary,
+            description: post.metadata.summary || post.metadata.description,
             image: post.metadata.image
               ? `${baseUrl}${post.metadata.image}`
               : `/og?title=${encodeURIComponent(post.metadata.title)}`,
