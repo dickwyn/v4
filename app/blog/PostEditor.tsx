@@ -3,16 +3,18 @@
 import React from 'react';
 import { useTina, tinaField } from 'tinacms/dist/react';
 import { StaticTinaMarkdown } from 'tinacms/dist/rich-text/static';
+import type { TinaMarkdownContent } from 'tinacms/dist/rich-text/static';
+import type { PostQuery } from '../../tina/__generated__/types';
 
 interface PostEditorProps {
   query: string;
   variables: Record<string, unknown>;
-  data: any;
-};
+  data: PostQuery;
+}
 
 export const PostEditor = ({ query, variables, data }: PostEditorProps) => {
-  const { data: tinaData } = useTina({ query, variables, data });
-  const post = (tinaData as any)?.post;
+  const { data: tinaData } = useTina<PostQuery>({ query, variables, data });
+  const post = tinaData?.post;
 
   return (
     <div>
@@ -31,7 +33,9 @@ export const PostEditor = ({ query, variables, data }: PostEditorProps) => {
         {post?.title}
       </h1>
       <article className="blog" data-tina-field={tinaField(post, 'body')}>
-        {post?.body ? <StaticTinaMarkdown content={post.body} /> : null}
+        {post?.body ? (
+          <StaticTinaMarkdown content={post.body as TinaMarkdownContent | TinaMarkdownContent[]} />
+        ) : null}
       </article>
     </div>
   );
