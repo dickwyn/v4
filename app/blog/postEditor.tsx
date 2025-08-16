@@ -6,6 +6,10 @@ import { StaticTinaMarkdown } from 'tinacms/dist/rich-text/static';
 import type { TinaMarkdownContent } from 'tinacms/dist/rich-text/static';
 import type { PostQuery } from '../../tina/__generated__/types';
 import { formatDate } from './clientUtils';
+import { YouTube } from 'app/components/tina/youtube';
+import { Iframe } from 'app/components/tina/iframe';
+import { Tweet } from 'app/components/tina/tweet';
+import { Figure } from 'app/components/tina/figure';
 
 interface PostEditorProps {
   query: string;
@@ -35,7 +39,23 @@ export const PostEditor = ({ query, variables, data }: PostEditorProps) => {
       </h1>
       <article className="blog" data-tina-field={tinaField(post, 'body')}>
         {post.body ? (
-          <StaticTinaMarkdown content={post.body as TinaMarkdownContent | TinaMarkdownContent[]} />
+          <StaticTinaMarkdown
+            content={post.body as TinaMarkdownContent | TinaMarkdownContent[]}
+            components={{
+              YouTube: (props: unknown) => (
+                <YouTube {...(props as React.ComponentProps<typeof YouTube>)} className="my-6" />
+              ),
+              Iframe: (props: unknown) => (
+                <Iframe {...(props as React.ComponentProps<typeof Iframe>)} className="my-6" />
+              ),
+              Tweet: (props: unknown) => (
+                <Tweet {...(props as React.ComponentProps<typeof Tweet>)} className="my-6" />
+              ),
+              Figure: (props: unknown) => (
+                <Figure {...(props as React.ComponentProps<typeof Figure>)} className="my-6" />
+              ),
+            }}
+          />
         ) : null}
       </article>
     </div>
