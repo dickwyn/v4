@@ -22,7 +22,7 @@ export async function generateMetadata(props) {
 
   const { title, date: publishedTime, summary, description, image } = post.metadata;
   const postDescription = summary || description;
-  const ogImage = image ? image : `${baseUrl}/og?title=${encodeURIComponent(title)}`;
+  const ogImage = image ? image : `${baseUrl}/og?title=${encodeURIComponent(title as string)}`;
 
   return {
     title,
