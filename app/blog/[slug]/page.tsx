@@ -1,7 +1,8 @@
-import { formatDate, getBlogPosts } from 'app/blog/utils';
-import { CustomMDX } from 'app/components/mdx';
+import { getBlogPosts } from 'app/blog/utils';
 import { baseUrl } from 'app/sitemap';
 import { notFound } from 'next/navigation';
+import { PostEditor } from '../postEditor';
+import { fetchPostForEditing } from '../tina-utils';
 
 export async function generateStaticParams() {
   const posts = getBlogPosts();
@@ -18,15 +19,16 @@ export async function generateMetadata(props) {
     return;
   }
 
-  const { title, date: publishedTime, summary: description, image } = post.metadata;
+  const { title, date: publishedTime, summary, description, image } = post.metadata;
+  const postDescription = summary || description;
   const ogImage = image ? image : `${baseUrl}/og?title=${encodeURIComponent(title)}`;
 
   return {
     title,
-    description,
+    description: postDescription,
     openGraph: {
       title,
-      description,
+      description: postDescription,
       type: 'article',
       publishedTime,
       url: `${baseUrl}/blog/${post.slug}`,
@@ -39,7 +41,7 @@ export async function generateMetadata(props) {
     twitter: {
       card: 'summary_large_image',
       title,
-      description,
+      description: postDescription,
       images: [ogImage],
     },
   };
@@ -53,6 +55,8 @@ export default async function Blog(props) {
     notFound();
   }
 
+  const tinaInitial = await fetchPostForEditing(`${post.slug}.mdx`).catch(() => null);
+
   return (
     <section>
       <script
@@ -65,7 +69,7 @@ export default async function Blog(props) {
             headline: post.metadata.title,
             datePublished: post.metadata.date,
             dateModified: post.metadata.date,
-            description: post.metadata.summary,
+            description: post.metadata.summary || post.metadata.description,
             image: post.metadata.image
               ? `${baseUrl}${post.metadata.image}`
               : `/og?title=${encodeURIComponent(post.metadata.title)}`,
@@ -77,15 +81,15 @@ export default async function Blog(props) {
           }),
         }}
       />
-      <div className="flex justify-between items-center my-2 text-sm">
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">
-          {formatDate(post.metadata.date)}
-        </p>
-      </div>
-      <h1 className="title font-semibold text-2xl tracking-tighter">{post.metadata.title}</h1>
-      <article className="blog">
-        <CustomMDX source={post.content} />
-      </article>
+      {tinaInitial?.data ? (
+        <PostEditor
+          query={tinaInitial.query}
+          variables={{ relativePath: `${post.slug}.mdx` }}
+          data={tinaInitial.data}
+        />
+      ) : (
+        <p>Failed to load post data. The post may have been deleted, moved, or there was a network error. Please try again later.</p>
+      )}
     </section>
   );
 }

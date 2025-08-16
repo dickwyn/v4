@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
-import { formatDate, getBlogPosts } from './utils';
+import { getBlogPosts } from './utils';
+import { formatDate } from './clientUtils';
 
 export const metadata = {
   title: "Dickwyn's Blog",
@@ -13,6 +14,7 @@ export default function Page() {
   return (
     <section className="grid gap-8">
       {blogPostList
+        .filter((post) => !post.metadata.draft)
         .sort((a, b) => {
           if (new Date(a.metadata.date) > new Date(b.metadata.date)) {
             return -1;
@@ -38,7 +40,7 @@ export default function Page() {
                 </h3>
               )}
               <p className="text-neutral-900 dark:text-neutral-100 tracking-tight">
-                {post.metadata.summary}
+                {post.metadata.summary || post.metadata.description}
               </p>
             </div>
           </Link>

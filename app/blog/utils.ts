@@ -1,13 +1,16 @@
 import fs from 'fs';
 import path from 'path';
 
-type Metadata = {
+interface Metadata {
   title: string;
   date: string;
-  summary: string;
+  summary?: string;
+  description?: string;
   subtitle?: string;
   image?: string;
-};
+  slug: string;
+  draft?: boolean;
+}
 
 function parseFrontmatter(fileContent: string) {
   const frontmatterRegex = /---\s*([\s\S]*?)\s*---/;
@@ -21,7 +24,14 @@ function parseFrontmatter(fileContent: string) {
     const [key, ...valueArr] = line.split(': ');
     let value = valueArr.join(': ').trim();
     value = value.replace(/^['"](.*)['"]$/, '$1'); // Remove quotes
-    metadata[key.trim() as keyof Metadata] = value;
+
+    if (value === 'true') {
+      metadata[key.trim()] = true;
+    } else if (value === 'false') {
+      metadata[key.trim()] = false;
+    } else {
+      metadata[key.trim()] = value;
+    }
   });
 
   return { metadata: metadata as Metadata, content };
@@ -52,40 +62,4 @@ function getMDXData(dir) {
 
 export function getBlogPosts() {
   return getMDXData(path.join(process.cwd(), 'app', 'blog', 'posts'));
-}
-
-export function formatDate(date: string, includeRelative = false) {
-  const currentDate = new Date();
-  if (!date.includes('T')) {
-    date = `${date}T00:00:00`;
-  }
-  const targetDate = new Date(date);
-
-  const yearsAgo = currentDate.getFullYear() - targetDate.getFullYear();
-  const monthsAgo = currentDate.getMonth() - targetDate.getMonth();
-  const daysAgo = currentDate.getDate() - targetDate.getDate();
-
-  let formattedDate = '';
-
-  if (yearsAgo > 0) {
-    formattedDate = `${yearsAgo}y ago`;
-  } else if (monthsAgo > 0) {
-    formattedDate = `${monthsAgo}mo ago`;
-  } else if (daysAgo > 0) {
-    formattedDate = `${daysAgo}d ago`;
-  } else {
-    formattedDate = 'Today';
-  }
-
-  const fullDate = targetDate.toLocaleString('en-us', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-  });
-
-  if (!includeRelative) {
-    return fullDate;
-  }
-
-  return `${fullDate} (${formattedDate})`;
 }
