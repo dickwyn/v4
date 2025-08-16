@@ -8,7 +8,7 @@ const compat = new FlatCompat({
   baseDirectory: import.meta.dirname,
 });
 
-export const eslintConfig = [
+const eslintConfig = [
   {
     ignores: ['.next/', 'node_modules/', 'dist/', 'build/', 'tina/__generated__/'],
   },
