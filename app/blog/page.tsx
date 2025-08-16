@@ -4,7 +4,7 @@ import { getBlogPosts } from '../utils/utils';
 import { formatDate } from '../utils/client';
 
 export const metadata = {
-  title: "Dickwyn's Blog",
+  title: "Blog",
   description: 'Read my blog.',
 };
 
