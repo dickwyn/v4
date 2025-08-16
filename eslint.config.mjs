@@ -2,11 +2,15 @@ import globals from 'globals';
 import pluginJs from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import pluginReact from 'eslint-plugin-react';
+import { FlatCompat } from '@eslint/eslintrc';
 
-// TODO configure plugins for next, react-hooks, airbnb-js when it supports eslint v9
-export default [
+const compat = new FlatCompat({
+  baseDirectory: import.meta.dirname,
+});
+
+export const eslintConfig = [
   {
-    ignores: ['.next/', 'node_modules/', 'dist/', 'build/'],
+    ignores: ['.next/', 'node_modules/', 'dist/', 'build/', 'tina/__generated__/'],
   },
   {
     files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
@@ -21,6 +25,9 @@ export default [
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
+  ...compat.config({
+    extends: ['next/core-web-vitals', 'next/typescript', 'prettier'],
+  }),
   {
     settings: {
       react: {
@@ -28,7 +35,6 @@ export default [
       },
     },
     rules: {
-      // Override rules as needed
       'react/react-in-jsx-scope': 'off',
       'react/prop-types': 'off',
       'no-console': 'warn',
@@ -36,3 +42,5 @@ export default [
     },
   },
 ];
+
+export default eslintConfig;
