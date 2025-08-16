@@ -22,7 +22,7 @@ export async function generateMetadata(props) {
 
   const { title, date: publishedTime, summary, description, image } = post.metadata;
   const postDescription = summary || description;
-  const ogImage = image ? image : `${baseUrl}/og?title=${encodeURIComponent(title as string)}`;
+  const ogImage = image ? image : `${baseUrl}/og?title=${encodeURIComponent(title)}`;
 
   return {
     title,
@@ -73,7 +73,7 @@ export default async function Blog(props) {
             description: post.metadata.summary || post.metadata.description,
             image: post.metadata.image
               ? `${baseUrl}${post.metadata.image}`
-              : `/og?title=${encodeURIComponent(post.metadata.title as string)}`,
+              : `/og?title=${encodeURIComponent(post.metadata.title)}`,
             url: `${baseUrl}/blog/${post.slug}`,
             author: {
               '@type': 'Person',
@@ -92,7 +92,7 @@ export default async function Blog(props) {
         <>
           <div className="flex justify-between items-center my-2 text-sm">
             <p className="text-sm text-neutral-600 dark:text-neutral-400">
-              {formatDate(post.metadata.date as string)}
+              {formatDate(post.metadata.date)}
             </p>
           </div>
           <h1 className="title font-semibold text-2xl tracking-tighter">{post.metadata.title}</h1>

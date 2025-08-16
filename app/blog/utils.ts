@@ -34,7 +34,7 @@ function parseFrontmatter(fileContent: string) {
     }
   });
 
-  return { metadata, content };
+  return { metadata: metadata as Metadata, content };
 }
 
 function getMDXFiles(dir) {
