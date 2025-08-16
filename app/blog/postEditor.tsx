@@ -5,6 +5,7 @@ import { useTina, tinaField } from 'tinacms/dist/react';
 import { StaticTinaMarkdown } from 'tinacms/dist/rich-text/static';
 import type { TinaMarkdownContent } from 'tinacms/dist/rich-text/static';
 import type { PostQuery } from '../../tina/__generated__/types';
+import { formatDate } from './clientUtils';
 
 interface PostEditorProps {
   query: string;
@@ -23,17 +24,17 @@ export const PostEditor = ({ query, variables, data }: PostEditorProps) => {
           className="text-sm text-neutral-600 dark:text-neutral-400"
           data-tina-field={tinaField(post, 'date')}
         >
-          {post?.date}
+          {formatDate(post.date)}
         </p>
       </div>
       <h1
         className="title font-semibold text-2xl tracking-tighter"
         data-tina-field={tinaField(post, 'title')}
       >
-        {post?.title}
+        {post.title}
       </h1>
       <article className="blog" data-tina-field={tinaField(post, 'body')}>
-        {post?.body ? (
+        {post.body ? (
           <StaticTinaMarkdown content={post.body as TinaMarkdownContent | TinaMarkdownContent[]} />
         ) : null}
       </article>

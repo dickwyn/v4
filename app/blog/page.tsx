@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
-import { formatDate, getBlogPosts } from './utils';
+import { getBlogPosts } from './utils';
+import { formatDate } from './clientUtils';
 
 export const metadata = {
   title: "Dickwyn's Blog",
