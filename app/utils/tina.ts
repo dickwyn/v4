@@ -1,4 +1,4 @@
-import { client } from '../tina-client';
+import { client } from '../tinaClient';
 
 export const postQuery = `
 	query post($relativePath: String!) {

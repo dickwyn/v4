@@ -5,7 +5,7 @@ import { useTina, tinaField } from 'tinacms/dist/react';
 import { StaticTinaMarkdown } from 'tinacms/dist/rich-text/static';
 import type { TinaMarkdownContent } from 'tinacms/dist/rich-text/static';
 import type { PostQuery } from '../../tina/__generated__/types';
-import { formatDate } from './clientUtils';
+import { formatDate } from '../utils/client';
 import { YouTube } from 'app/components/tina/youtube';
 import { Iframe } from 'app/components/tina/iframe';
 import { Tweet } from 'app/components/tina/tweet';

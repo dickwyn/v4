@@ -1,4 +1,4 @@
-import { getBlogPosts } from 'app/blog/utils';
+import { getBlogPosts } from 'app/utils/utils';
 
 export const baseUrl = 'https://dickwyn.xyz';
 

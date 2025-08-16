@@ -1,8 +1,8 @@
-import { getBlogPosts } from 'app/blog/utils';
+import { getBlogPosts } from 'app/utils/utils';
 import { baseUrl } from 'app/sitemap';
 import { notFound } from 'next/navigation';
 import { PostEditor } from '../postEditor';
-import { fetchPostForEditing } from '../tina-utils';
+import { fetchPostForEditing } from '../../utils/tina';
 
 export async function generateStaticParams() {
   const posts = getBlogPosts();
