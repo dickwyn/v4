@@ -70,6 +70,89 @@ export default defineConfig({
             name: 'body',
             label: 'Body',
             isBody: true,
+            templates: [
+              {
+                name: 'YouTube',
+                label: 'YouTube Embed',
+                fields: [
+                  {
+                    type: 'string',
+                    name: 'id',
+                    label: 'Video ID',
+                    required: true,
+                  },
+                  {
+                    type: 'string',
+                    name: 'title',
+                    label: 'Title',
+                    required: false,
+                  },
+                  {
+                    type: 'number',
+                    name: 'start',
+                    label: 'Start time (seconds)',
+                    required: false,
+                  },
+                  { type: 'string', name: 'className', label: 'Class Name', required: false },
+                ],
+              },
+              {
+                name: 'Iframe',
+                label: 'Generic Iframe',
+                fields: [
+                  { type: 'string', name: 'src', label: 'Src URL', required: true },
+                  { type: 'string', name: 'title', label: 'Title', required: false },
+                  { type: 'number', name: 'height', label: 'Height (px)', required: false },
+                  {
+                    type: 'boolean',
+                    name: 'allowFullscreen',
+                    label: 'Allow Fullscreen',
+                    required: false,
+                  },
+                  { type: 'string', name: 'className', label: 'Class Name', required: false },
+                ],
+              },
+              {
+                name: 'Tweet',
+                label: 'Twitter Embed',
+                fields: [
+                  {
+                    type: 'string',
+                    name: 'id',
+                    label: 'Tweet ID',
+                    required: true,
+                  },
+                  { type: 'string', name: 'className', label: 'Class Name', required: false },
+                  {
+                    type: 'string',
+                    name: 'theme',
+                    label: 'Theme',
+                    options: [
+                      { value: 'light', label: 'Light' },
+                      { value: 'dark', label: 'Dark' },
+                    ],
+                    required: false,
+                  },
+                  {
+                    type: 'string',
+                    name: 'lang',
+                    label: 'Language (e.g. en, es)',
+                    required: false,
+                  },
+                  { type: 'number', name: 'height', label: 'Height (px)', required: false },
+                ],
+              },
+              {
+                name: 'Figure',
+                label: 'Figure',
+                fields: [
+                  { type: 'string', name: 'src', label: 'Image URL', required: true },
+                  { type: 'string', name: 'alt', label: 'Alt text', required: false },
+                  { type: 'string', name: 'caption', label: 'Caption', required: false },
+                  { type: 'string', name: 'className', label: 'Class Name', required: false },
+                ],
+              },
+            ],
           },
         ],
         ui: {
