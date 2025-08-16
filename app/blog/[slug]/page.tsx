@@ -88,7 +88,7 @@ export default async function Blog(props) {
           data={tinaInitial.data}
         />
       ) : (
-        <p>Something went wrong, please try again later...</p>
+        <p>Failed to load post data. The post may have been deleted, moved, or there was a network error. Please try again later.</p>
       )}
     </section>
   );
