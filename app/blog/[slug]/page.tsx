@@ -73,7 +73,7 @@ export default async function Blog(props) {
             description: post.metadata.summary || post.metadata.description,
             image: post.metadata.image
               ? `${baseUrl}${post.metadata.image}`
-              : `/og?title=${encodeURIComponent(post.metadata.title)}`,
+              : `/og?title=${encodeURIComponent(post.metadata.title as string)}`,
             url: `${baseUrl}/blog/${post.slug}`,
             author: {
               '@type': 'Person',
@@ -92,7 +92,7 @@ export default async function Blog(props) {
         <>
           <div className="flex justify-between items-center my-2 text-sm">
             <p className="text-sm text-neutral-600 dark:text-neutral-400">
-              {formatDate(post.metadata.date)}
+              {formatDate(post.metadata.date as string)}
             </p>
           </div>
           <h1 className="title font-semibold text-2xl tracking-tighter">{post.metadata.title}</h1>
