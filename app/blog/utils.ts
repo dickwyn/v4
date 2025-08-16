@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-type Metadata = {
+interface Metadata {
   title: string;
   date: string;
   summary?: string;
@@ -10,7 +10,7 @@ type Metadata = {
   image?: string;
   slug: string;
   draft?: boolean;
-};
+}
 
 function parseFrontmatter(fileContent: string) {
   const frontmatterRegex = /---\s*([\s\S]*?)\s*---/;
@@ -18,14 +18,13 @@ function parseFrontmatter(fileContent: string) {
   const frontMatterBlock = match![1];
   const content = fileContent.replace(frontmatterRegex, '').trim();
   const frontMatterLines = frontMatterBlock.trim().split('\n');
-  const metadata: Record<string, unknown> = {};
+  const metadata: Partial<Metadata> = {};
 
   frontMatterLines.forEach((line) => {
     const [key, ...valueArr] = line.split(': ');
     let value = valueArr.join(': ').trim();
     value = value.replace(/^['"](.*)['"]$/, '$1'); // Remove quotes
 
-    // Handle boolean values
     if (value === 'true') {
       metadata[key.trim()] = true;
     } else if (value === 'false') {
@@ -35,7 +34,7 @@ function parseFrontmatter(fileContent: string) {
     }
   });
 
-  return { metadata: metadata as Metadata, content };
+  return { metadata, content };
 }
 
 function getMDXFiles(dir) {
