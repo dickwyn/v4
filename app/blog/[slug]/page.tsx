@@ -1,10 +1,8 @@
 import { getBlogPosts } from 'app/blog/utils';
-import { CustomMDX } from 'app/components/mdx';
 import { baseUrl } from 'app/sitemap';
 import { notFound } from 'next/navigation';
 import { PostEditor } from '../postEditor';
 import { fetchPostForEditing } from '../tina-utils';
-import { formatDate } from '../clientUtils';
 
 export async function generateStaticParams() {
   const posts = getBlogPosts();
@@ -90,17 +88,7 @@ export default async function Blog(props) {
           data={tinaInitial.data}
         />
       ) : (
-        <>
-          <div className="flex justify-between items-center my-2 text-sm">
-            <p className="text-sm text-neutral-600 dark:text-neutral-400">
-              {formatDate(post.metadata.date)}
-            </p>
-          </div>
-          <h1 className="title font-semibold text-2xl tracking-tighter">{post.metadata.title}</h1>
-          <article className="blog">
-            <CustomMDX source={post.content} />
-          </article>
-        </>
+        <p>Something went wrong, please try again later...</p>
       )}
     </section>
   );
