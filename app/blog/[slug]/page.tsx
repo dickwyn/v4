@@ -1,9 +1,10 @@
-import { formatDate, getBlogPosts } from 'app/blog/utils';
+import { getBlogPosts } from 'app/blog/utils';
 import { CustomMDX } from 'app/components/mdx';
 import { baseUrl } from 'app/sitemap';
 import { notFound } from 'next/navigation';
 import { PostEditor } from '../postEditor';
 import { fetchPostForEditing } from '../tina-utils';
+import { formatDate } from '../clientUtils';
 
 export async function generateStaticParams() {
   const posts = getBlogPosts();
