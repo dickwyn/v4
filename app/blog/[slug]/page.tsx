@@ -11,6 +11,7 @@ type Props = {
 
 export const generateStaticParams = async () => {
   const postList = await getPostList();
+
   return postList.map((post) => ({
     slug: post.slug,
   }));
@@ -20,7 +21,8 @@ export const generateMetadata = async (
   { params }: Props,
   _parent: ResolvingMetadata
 ): Promise<Metadata> => {
-  const { post } = await getPost(params.slug);
+  const { slug } = await params;
+  const { post } = await getPost(slug);
 
   if (!post) {
     return {};
@@ -63,7 +65,8 @@ export const generateMetadata = async (
 };
 
 const BlogPage = async ({ params }: Props) => {
-  const { post, rawPost } = await getPost(params.slug);
+  const { slug } = await params;
+  const { post, rawPost } = await getPost(slug);
 
   if (!post) {
     notFound();
