@@ -168,6 +168,88 @@ export default defineConfig({
           router: ({ document }) => `/blog/${document._sys.filename}`,
         },
       },
+      {
+        name: 'styleguide',
+        label: 'Styleguide',
+        path: 'app/styleguide',
+        format: 'mdx',
+        fields: [
+          {
+            type: 'string',
+            name: 'title',
+            label: 'Title',
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: 'string',
+            name: 'description',
+            label: 'Description',
+            ui: { component: 'textarea' },
+          },
+          {
+            type: 'rich-text',
+            name: 'body',
+            label: 'Body',
+            isBody: true,
+            templates: [
+              {
+                name: 'YouTube',
+                label: 'YouTube Embed',
+                fields: [
+                  { type: 'string', name: 'id', label: 'Video ID', required: true },
+                  { type: 'string', name: 'title', label: 'Title' },
+                  { type: 'number', name: 'start', label: 'Start time (seconds)' },
+                  { type: 'string', name: 'className', label: 'Class Name' },
+                ],
+              },
+              {
+                name: 'Iframe',
+                label: 'Generic Iframe',
+                fields: [
+                  { type: 'string', name: 'src', label: 'Src URL', required: true },
+                  { type: 'string', name: 'title', label: 'Title' },
+                  { type: 'number', name: 'height', label: 'Height (px)' },
+                  { type: 'boolean', name: 'allowFullscreen', label: 'Allow Fullscreen' },
+                  { type: 'string', name: 'className', label: 'Class Name' },
+                ],
+              },
+              {
+                name: 'Tweet',
+                label: 'Twitter Embed',
+                fields: [
+                  { type: 'string', name: 'id', label: 'Tweet ID', required: true },
+                  { type: 'string', name: 'className', label: 'Class Name' },
+                  {
+                    type: 'string',
+                    name: 'theme',
+                    label: 'Theme',
+                    options: [
+                      { value: 'light', label: 'Light' },
+                      { value: 'dark', label: 'Dark' },
+                    ],
+                  },
+                  { type: 'string', name: 'lang', label: 'Language (e.g. en, es)' },
+                  { type: 'number', name: 'height', label: 'Height (px)' },
+                ],
+              },
+              {
+                name: 'Figure',
+                label: 'Figure',
+                fields: [
+                  { type: 'string', name: 'src', label: 'Image URL', required: true },
+                  { type: 'string', name: 'alt', label: 'Alt text' },
+                  { type: 'string', name: 'caption', label: 'Caption' },
+                  { type: 'string', name: 'className', label: 'Class Name' },
+                ],
+              },
+            ],
+          },
+        ],
+        ui: {
+          router: ({ document }) => `/styleguide`,
+        },
+      },
     ],
   },
 });

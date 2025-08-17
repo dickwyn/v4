@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import { PostEditor } from '../blog/postEditor';
-import { getPost } from '../utils/tina';
+import { getStyleguide } from '../utils/tina';
 
 export const metadata: Metadata = {
   title: 'Styleguide',
@@ -16,19 +16,15 @@ export const metadata: Metadata = {
 };
 
 export default async function StyleguidePage() {
-  const { post, rawPost } = await getPost('styleguide');
+  const { doc, rawDoc } = await getStyleguide('styleguide');
 
-  if (!post || !rawPost?.data) {
+  if (!doc || !rawDoc?.data) {
     notFound();
   }
 
   return (
     <section>
-      <PostEditor
-        query={rawPost.query}
-        variables={{ relativePath: `${post.slug}.mdx` }}
-        data={rawPost.data}
-      />
+      <PostEditor query={rawDoc.query} variables={{ relativePath: `styleguide.mdx` }} data={rawDoc.data} />
     </section>
   );
 }

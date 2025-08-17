@@ -40,6 +40,19 @@ const postListQuery = `
 	}
 `;
 
+const styleguideQuery = `
+	query styleguide($relativePath: String!) {
+		styleguide(relativePath: $relativePath) {
+			__typename
+			title
+			description
+			body
+			_sys { filename basename hasReferences breadcrumbs path relativePath extension }
+			id
+		}
+	}
+`;
+
 export const getPost = async (slug: string) => {
   const posts = await getPostList();
   const post = posts.find((p) => p.slug === slug);
@@ -70,4 +83,24 @@ export const getPostList = async () => {
       },
     };
   });
+};
+
+export const getStyleguide = async (slug: string) => {
+	// The styleguide collection uses a single file "styleguide.mdx" under app/styleguide/
+	const relativePath = `${slug}.mdx`;
+	const rawDoc = await client
+		.request({ query: styleguideQuery, variables: { relativePath } }, {})
+		.catch(() => null);
+
+	const doc = rawDoc?.data?.styleguide
+		? {
+				...rawDoc.data.styleguide,
+				metadata: {
+					title: rawDoc.data.styleguide.title,
+					description: rawDoc.data.styleguide.description,
+				},
+			}
+		: null;
+
+	return { doc, rawDoc };
 };
