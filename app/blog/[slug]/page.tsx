@@ -12,8 +12,9 @@ export const generateStaticParams = async () => {
 
 export const generateMetadata = async ({ params }: { params: { slug: string } }) => {
   const { post } = await getPost(params.slug);
+
   if (!post) {
-    return;
+    return {};
   }
 
   return {
@@ -31,6 +32,24 @@ export const generateMetadata = async ({ params }: { params: { slug: string } })
         },
       ],
     },
+    other: {
+      'application/ld+json': JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: post.metadata.title,
+        datePublished: post.metadata.date,
+        dateModified: post.metadata.date,
+        description: post.metadata.description,
+        image: post.metadata.image
+          ? `${baseUrl}${post.metadata.image}`
+          : `/og?title=${encodeURIComponent(post.metadata.title)}`,
+        url: `${baseUrl}/blog/${post.slug}`,
+        author: {
+          '@type': 'Person',
+          name: 'My Portfolio',
+        },
+      }),
+    },
   };
 };
 
@@ -43,28 +62,6 @@ const BlogPage = async ({ params }: { params: { slug: string } }) => {
 
   return (
     <section>
-      <script
-        type="application/ld+json"
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'BlogPosting',
-            headline: post.metadata.title,
-            datePublished: post.metadata.date,
-            dateModified: post.metadata.date,
-            description: post.metadata.description,
-            image: post.metadata.image
-              ? `${baseUrl}${post.metadata.image}`
-              : `/og?title=${encodeURIComponent(post.metadata.title)}`,
-            url: `${baseUrl}/blog/${post.slug}`,
-            author: {
-              '@type': 'Person',
-              name: 'My Portfolio',
-            },
-          }),
-        }}
-      />
       {rawPost?.data ? (
         <PostEditor
           query={rawPost.query}
