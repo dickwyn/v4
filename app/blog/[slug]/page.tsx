@@ -13,7 +13,9 @@ type Props = {
 export const generateStaticParams = async () => {
   const postList = await getPostList();
 
-  return postList.map((post) => ({
+  return postList
+    .filter((p) => !p.metadata?.draft)
+    .map((post) => ({
     slug: post.slug,
   }));
 };
