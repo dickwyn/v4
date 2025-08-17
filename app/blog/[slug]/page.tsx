@@ -1,7 +1,13 @@
+import type { Metadata, ResolvingMetadata } from 'next';
 import { getPostList, getPost } from 'app/utils/tina';
 import { baseUrl } from 'app/sitemap';
 import { notFound } from 'next/navigation';
 import { PostEditor } from '../postEditor';
+
+type Props = {
+  params: { slug: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
 
 export const generateStaticParams = async () => {
   const postList = await getPostList();
@@ -10,7 +16,10 @@ export const generateStaticParams = async () => {
   }));
 };
 
-export const generateMetadata = async ({ params }: { params: { slug: string } }) => {
+export const generateMetadata = async (
+  { params }: Props,
+  _parent: ResolvingMetadata
+): Promise<Metadata> => {
   const { post } = await getPost(params.slug);
 
   if (!post) {
@@ -53,7 +62,7 @@ export const generateMetadata = async ({ params }: { params: { slug: string } })
   };
 };
 
-const BlogPage = async ({ params }: { params: { slug: string } }) => {
+const BlogPage = async ({ params }: Props) => {
   const { post, rawPost } = await getPost(params.slug);
 
   if (!post) {
