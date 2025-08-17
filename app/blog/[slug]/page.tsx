@@ -1,61 +1,45 @@
-import { getBlogPosts } from 'app/utils/utils';
+import { getPostList, getPost } from 'app/utils/tina';
 import { baseUrl } from 'app/sitemap';
 import { notFound } from 'next/navigation';
 import { PostEditor } from '../postEditor';
-import { fetchPostForEditing } from '../../utils/tina';
 
-export async function generateStaticParams() {
-  const posts = getBlogPosts();
-
-  return posts.map((post) => ({
+export const generateStaticParams = async () => {
+  const postList = await getPostList();
+  return postList.map((post) => ({
     slug: post.slug,
   }));
-}
+};
 
-export async function generateMetadata(props) {
-  const params = await props.params;
-  const post = getBlogPosts().find((post) => post.slug === params.slug);
+export const generateMetadata = async ({ params }: { params: { slug: string } }) => {
+  const { post } = await getPost(params.slug);
   if (!post) {
     return;
   }
 
-  const { title, date: publishedTime, summary, description, image } = post.metadata;
-  const postDescription = summary || description;
-  const ogImage = image ? image : `${baseUrl}/og?title=${encodeURIComponent(title)}`;
-
   return {
-    title,
-    description: postDescription,
+    title: post.title,
+    description: post.excerpt,
     openGraph: {
-      title,
-      description: postDescription,
-      type: 'article',
-      publishedTime,
+      title: post.title,
+      description: post.excerpt,
       url: `${baseUrl}/blog/${post.slug}`,
       images: [
         {
-          url: ogImage,
+          url: post.coverImage?.src,
+          width: 800,
+          height: 600,
         },
       ],
     },
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description: postDescription,
-      images: [ogImage],
-    },
   };
-}
+};
 
-export default async function Blog(props) {
-  const params = await props.params;
-  const post = getBlogPosts().find((post) => post.slug === params.slug);
+const BlogPage = async ({ params }: { params: { slug: string } }) => {
+  const { post, rawPost } = await getPost(params.slug);
 
   if (!post) {
     notFound();
   }
-
-  const tinaInitial = await fetchPostForEditing(`${post.slug}.mdx`).catch(() => null);
 
   return (
     <section>
@@ -69,7 +53,7 @@ export default async function Blog(props) {
             headline: post.metadata.title,
             datePublished: post.metadata.date,
             dateModified: post.metadata.date,
-            description: post.metadata.summary || post.metadata.description,
+            description: post.metadata.description,
             image: post.metadata.image
               ? `${baseUrl}${post.metadata.image}`
               : `/og?title=${encodeURIComponent(post.metadata.title)}`,
@@ -81,15 +65,17 @@ export default async function Blog(props) {
           }),
         }}
       />
-      {tinaInitial?.data ? (
+      {rawPost?.data ? (
         <PostEditor
-          query={tinaInitial.query}
+          query={rawPost.query}
           variables={{ relativePath: `${post.slug}.mdx` }}
-          data={tinaInitial.data}
+          data={rawPost.data}
         />
       ) : (
         <p>Failed to load post data. The post may have been deleted, moved, or there was a network error. Please try again later.</p>
       )}
     </section>
   );
-}
+};
+
+export default BlogPage;

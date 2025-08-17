@@ -59,6 +59,16 @@ export default defineConfig({
             required: true,
           },
           {
+            type: 'string',
+            name: 'subtitle',
+            label: 'Subtitle',
+          },
+          {
+            type: 'image',
+            name: 'image',
+            label: 'Image',
+          },
+          {
             type: 'boolean',
             name: 'draft',
             label: 'Draft',

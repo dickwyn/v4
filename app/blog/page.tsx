@@ -1,19 +1,14 @@
 import Link from 'next/link';
 
-import { getBlogPosts } from '../utils/utils';
+import { getPostList } from '../utils/tina';
 import { formatDate } from '../utils/client';
 
-export const metadata = {
-  title: "Blog",
-  description: 'Read my blog.',
-};
-
-export default function Page() {
-  const blogPostList = getBlogPosts();
+const Page = async () => {
+  const postList = await getPostList();
 
   return (
     <section className="grid gap-8">
-      {blogPostList
+      {postList
         .filter((post) => !post.metadata.draft)
         .sort((a, b) => {
           if (new Date(a.metadata.date) > new Date(b.metadata.date)) {
@@ -40,7 +35,7 @@ export default function Page() {
                 </h3>
               )}
               <p className="text-neutral-900 dark:text-neutral-100 tracking-tight">
-                {post.metadata.summary || post.metadata.description}
+                {post.metadata.description}
               </p>
             </div>
           </Link>
@@ -48,3 +43,5 @@ export default function Page() {
     </section>
   );
 }
+
+export default Page;

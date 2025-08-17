@@ -1,10 +1,11 @@
 import { baseUrl } from 'app/sitemap';
-import { getBlogPosts } from 'app/utils/utils';
 
-export async function GET() {
-  const allBlogs = await getBlogPosts();
+import { getPostList } from '../utils/tina';
 
-  const itemsXml = allBlogs
+export const GET = async () => {
+  const postList = await getPostList();
+
+  const itemsXml = postList
     .sort((a, b) => {
       if (new Date(a.metadata.date) > new Date(b.metadata.date)) {
         return -1;
@@ -16,7 +17,7 @@ export async function GET() {
         `<item>
           <title>${post.metadata.title}</title>
           <link>${baseUrl}/blog/${post.slug}</link>
-          <description>${post.metadata.summary || ''}</description>
+          <description>${post.metadata.description || ''}</description>
           <pubDate>${new Date(post.metadata.date).toUTCString()}</pubDate>
         </item>`
     )
@@ -37,4 +38,4 @@ export async function GET() {
       'Content-Type': 'text/xml',
     },
   });
-}
+};
