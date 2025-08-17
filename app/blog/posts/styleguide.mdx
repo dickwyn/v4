@@ -20,7 +20,7 @@ draft: false
 
 ###### Heading 6
 
-* * *
+---
 
 # Headings with Text
 
@@ -48,7 +48,7 @@ Lorem ipsum dolor sit amet, adipiscing elit. Nullam dignissim convallis est. Qui
 
 Lorem ipsum dolor sit amet, adipiscing elit. Nullam dignissim convallis est. Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl.
 
-* * *
+---
 
 # Block Elements
 
@@ -70,11 +70,11 @@ This is a standard paragraph. Lorem ipsum dolor sit amet, consectetuer adipiscin
 
 This is a standard paragraph. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
 
-*Note: the [Figure-Figcaption](https://html5doctor.com/the-figure-figcaption-elements/) and [Details-Summary](https://html5doctor.com/the-details-and-summary-elements/) elements are not currently supported in markdown.*
+_Note: the [Figure-Figcaption](https://html5doctor.com/the-figure-figcaption-elements/) and [Details-Summary](https://html5doctor.com/the-details-and-summary-elements/) elements are not currently supported in markdown._
 
-* * *
+---
 
-#  Text Elements
+# Text Elements
 
 The [a element](#), [external a element](https://example.com), and [a element with title](# 'Example Title') examples
 
@@ -122,12 +122,11 @@ The <sup>sup element</sup> example
 
 The <time datetime="2005-05-15 19:00">time element</time> example
 
-
 The <u>u element</u> example
 
 The <var>var element</var> example
 
-* * *
+---
 
 # Monospace / Preformatted
 
@@ -135,18 +134,23 @@ Code block wrapped in "pre" and "code" tags:
 
 ```javascript
 // Loop through Divs using Javascript.
-var divs = document.querySelectorAll('div'), i;
+var divs = document.querySelectorAll('div'),
+  i;
 
 for (i = 0; i < divs.length; ++i) {
-  divs[i].style.color = "green";
+  divs[i].style.color = 'green';
 }
 ```
 
 Monospace Text wrapped in "pre" tags:
 
-<pre>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam dignissim convallis est. Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl.</pre>
+<pre>
+  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam dignissim convallis est. Quisque
+  aliquam. Donec faucibus. Nunc iaculis suscipit dui. Nam sit amet sem. Aliquam libero nisi,
+  imperdiet at, tincidunt nec, gravida vehicula, nisl.
+</pre>
 
-* * *
+---
 
 # List Types
 
@@ -155,24 +159,24 @@ Monospace Text wrapped in "pre" tags:
 1. List Item 1
 2. List Item 2
 3. List Item 3
-    1. List Item 3.1
-    2. List Item 3.2
-        1. List Item 3.2.1
-        2. List Item 3.2 2
-    3. List Item 3.3
+   1. List Item 3.1
+   2. List Item 3.2
+      1. List Item 3.2.1
+      2. List Item 3.2 2
+   3. List Item 3.3
 4. List Item 4
 
 ## Unordered List
 
-* List Item 1
-* List Item 2
-* List Item 3
-    * List Item 3.1
-    * List Item 3.2
-        * List Item 3.2.1
-        * List Item 3.2 2
-    * List Item 3.3
-* List Item 4
+- List Item 1
+- List Item 2
+- List Item 3
+  - List Item 3.1
+  - List Item 3.2
+    - List Item 3.2.1
+    - List Item 3.2 2
+  - List Item 3.3
+- List Item 4
 
 ## Definition List
 
@@ -183,7 +187,7 @@ Monospace Text wrapped in "pre" tags:
   <dd>Definition Description 2</dd>
 </dl>
 
-* * *
+---
 
 # Tables
 
@@ -193,7 +197,7 @@ Monospace Text wrapped in "pre" tags:
 | Division 1     | Division 2     | Division 3     |
 | Division 1     | Division 2     | Division 3     |
 
-* * *
+---
 
 # Media and Form Elements
 
