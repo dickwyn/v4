@@ -3,6 +3,11 @@ import Link from 'next/link';
 import { getPostList } from '../utils/tina';
 import { formatDate } from '../utils/client';
 
+export const metadata = {
+  title: "Blog",
+  description: 'Read my blog.',
+};
+
 const Page = async () => {
   const postList = await getPostList();
 
