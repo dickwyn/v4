@@ -1,13 +1,14 @@
-import type { Metadata, ResolvingMetadata } from 'next';
-import { getPostList, getPost } from 'app/utils/tina';
 import { baseUrl } from 'app/sitemap';
+import { getPost, getPostList } from 'app/utils/tina';
+import type { Metadata, ResolvingMetadata } from 'next';
 import { notFound } from 'next/navigation';
+
 import { PostEditor } from '../postEditor';
 
 type Props = {
-  params: Promise<{ slug: string }>
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
-}
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
 
 export const generateStaticParams = async () => {
   const postList = await getPostList();
@@ -72,7 +73,7 @@ const BlogPage = async ({ params }: Props) => {
     notFound();
   }
 
-   return (
+  return (
     <section>
       {rawPost?.data ? (
         <PostEditor
@@ -81,7 +82,10 @@ const BlogPage = async ({ params }: Props) => {
           data={rawPost.data}
         />
       ) : (
-        <p>Failed to load post data. The post may have been deleted, moved, or there was a network error. Please try again later.</p>
+        <p>
+          Failed to load post data. The post may have been deleted, moved, or there was a network
+          error. Please try again later.
+        </p>
       )}
     </section>
   );

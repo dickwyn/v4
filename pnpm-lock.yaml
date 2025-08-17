@@ -66,7 +66,7 @@ importers:
         version: 9.27.0
       '@ianvs/prettier-plugin-sort-imports':
         specifier: ^4.4.1
-        version: 4.4.1(prettier@3.3.3)
+        version: 4.4.1(prettier@3.6.2)
       '@next/eslint-plugin-next':
         specifier: ^15.4.6
         version: 15.4.6
@@ -88,6 +88,9 @@ importers:
       globals:
         specifier: ^16.1.0
         version: 16.1.0
+      prettier:
+        specifier: ^3.6.2
+        version: 3.6.2
       typescript-eslint:
         specifier: ^8.32.1
         version: 8.32.1(eslint@9.27.0(jiti@2.4.2))(typescript@5.8.3)
@@ -5013,8 +5016,8 @@ packages:
     engines: {node: '>=10.13.0'}
     hasBin: true
 
-  prettier@3.3.3:
-    resolution: {integrity: sha512-i2tDNA0O5IrMO757lfrdQZCc2jPNDVntV0m/+4whiDfWaTKfMNgR7Qz0NAeGz/nRqF4m5/6CLzbP4/liHt12Ew==}
+  prettier@3.6.2:
+    resolution: {integrity: sha512-I7AIg5boAr5R0FFtJ6rCfD+LFsWHp81dolrFD8S79U9tb8Az2nGrJncnMSnys+bpQJfRUzqs9hnA81OAA3hCuQ==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -6952,13 +6955,13 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.3': {}
 
-  '@ianvs/prettier-plugin-sort-imports@4.4.1(prettier@3.3.3)':
+  '@ianvs/prettier-plugin-sort-imports@4.4.1(prettier@3.6.2)':
     dependencies:
       '@babel/generator': 7.27.1
       '@babel/parser': 7.27.2
       '@babel/traverse': 7.27.1
       '@babel/types': 7.27.1
-      prettier: 3.3.3
+      prettier: 3.6.2
       semver: 7.7.2
     transitivePeerDependencies:
       - supports-color
@@ -12251,7 +12254,7 @@ snapshots:
 
   prettier@2.8.8: {}
 
-  prettier@3.3.3: {}
+  prettier@3.6.2: {}
 
   prism-react-renderer@2.4.1(react@19.1.0):
     dependencies:
