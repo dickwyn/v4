@@ -12,8 +12,8 @@
   },
   "homepage": "https://dickwyn.xyz",
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
+    "dev": "tinacms dev -c \"next dev --turbopack\"",
+    "build": "tinacms build && next build",
     "start": "next start",
     "prettify": "prettier --write \"**/*.{ts,tsx,json,mdx}\"",
     "lint": "eslint ."
@@ -32,6 +32,7 @@
     "react-dom": "19.1.0",
     "sugar-high": "^0.9.3",
     "tailwindcss": "^4.1.7",
+    "tinacms": "^2.8.2",
     "typescript": "5.8.3"
   },
   "devDependencies": {
@@ -39,11 +40,13 @@
     "@eslint/js": "^9.27.0",
     "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
     "@next/eslint-plugin-next": "^15.4.6",
+    "@tinacms/cli": "^1.10.2",
     "eslint": "^9.27.0",
     "eslint-config-next": "^15.4.6",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react": "^7.37.5",
     "globals": "^16.1.0",
+    "prettier": "^3.6.2",
     "typescript-eslint": "^8.32.1"
   },
   "pnpm": {

@@ -1,53 +1,73 @@
-import { formatDate, getBlogPosts } from 'app/blog/utils';
-import { CustomMDX } from 'app/components/mdx';
 import { baseUrl } from 'app/sitemap';
+import { getPost, getPostList } from 'app/utils/tina';
+import type { Metadata, ResolvingMetadata } from 'next';
 import { notFound } from 'next/navigation';
 
-export async function generateStaticParams() {
-  const posts = getBlogPosts();
+import { PostEditor } from '../postEditor';
 
-  return posts.map((post) => ({
+type Props = {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
+export const generateStaticParams = async () => {
+  const postList = await getPostList();
+
+  return postList.map((post) => ({
     slug: post.slug,
   }));
-}
+};
 
-export async function generateMetadata(props) {
-  const params = await props.params;
-  const post = getBlogPosts().find((post) => post.slug === params.slug);
+export const generateMetadata = async (
+  { params }: Props,
+  _parent: ResolvingMetadata
+): Promise<Metadata> => {
+  const { slug } = await params;
+  const { post } = await getPost(slug);
+
   if (!post) {
-    return;
+    return {};
   }
 
-  const { title, date: publishedTime, summary: description, image } = post.metadata;
-  const ogImage = image ? image : `${baseUrl}/og?title=${encodeURIComponent(title)}`;
-
   return {
-    title,
-    description,
+    title: post.title,
+    description: post.description,
     openGraph: {
-      title,
-      description,
-      type: 'article',
-      publishedTime,
+      title: post.title,
+      description: post.description,
       url: `${baseUrl}/blog/${post.slug}`,
       images: [
         {
-          url: ogImage,
+          url: post.image,
+          width: 800,
+          height: 600,
         },
       ],
     },
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description,
-      images: [ogImage],
+    other: {
+      'application/ld+json': JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: post.metadata.title,
+        datePublished: post.metadata.date,
+        dateModified: post.metadata.date,
+        description: post.metadata.description,
+        image: post.metadata.image
+          ? `${baseUrl}${post.metadata.image}`
+          : `/og?title=${encodeURIComponent(post.metadata.title)}`,
+        url: `${baseUrl}/blog/${post.slug}`,
+        author: {
+          '@type': 'Person',
+          name: 'My Portfolio',
+        },
+      }),
     },
   };
-}
+};
 
-export default async function Blog(props) {
-  const params = await props.params;
-  const post = getBlogPosts().find((post) => post.slug === params.slug);
+const BlogPage = async ({ params }: Props) => {
+  const { slug } = await params;
+  const { post, rawPost } = await getPost(slug);
 
   if (!post) {
     notFound();
@@ -55,37 +75,20 @@ export default async function Blog(props) {
 
   return (
     <section>
-      <script
-        type="application/ld+json"
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'BlogPosting',
-            headline: post.metadata.title,
-            datePublished: post.metadata.date,
-            dateModified: post.metadata.date,
-            description: post.metadata.summary,
-            image: post.metadata.image
-              ? `${baseUrl}${post.metadata.image}`
-              : `/og?title=${encodeURIComponent(post.metadata.title)}`,
-            url: `${baseUrl}/blog/${post.slug}`,
-            author: {
-              '@type': 'Person',
-              name: 'My Portfolio',
-            },
-          }),
-        }}
-      />
-      <div className="flex justify-between items-center my-2 text-sm">
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">
-          {formatDate(post.metadata.date)}
+      {rawPost?.data ? (
+        <PostEditor
+          query={rawPost.query}
+          variables={{ relativePath: `${post.slug}.mdx` }}
+          data={rawPost.data}
+        />
+      ) : (
+        <p>
+          Failed to load post data. The post may have been deleted, moved, or there was a network
+          error. Please try again later.
         </p>
-      </div>
-      <h1 className="title font-semibold text-2xl tracking-tighter">{post.metadata.title}</h1>
-      <article className="blog">
-        <CustomMDX source={post.content} />
-      </article>
+      )}
     </section>
   );
-}
+};
+
+export default BlogPage;

@@ -1,9 +1,9 @@
-import { getBlogPosts } from 'app/blog/utils';
+import { getPostList } from './utils/tina';
 
 export const baseUrl = 'https://dickwyn.xyz';
 
-export default async function sitemap() {
-  const blogs = getBlogPosts().map((post) => ({
+const sitemap = async () => {
+  const postList = (await getPostList()).map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
     lastModified: post.metadata.date,
   }));
@@ -13,5 +13,7 @@ export default async function sitemap() {
     lastModified: new Date().toISOString().split('T')[0],
   }));
 
-  return [...routes, ...blogs];
-}
+  return [...routes, ...postList];
+};
+
+export default sitemap;
