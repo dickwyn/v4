@@ -24,7 +24,12 @@ export default async function StyleguidePage() {
 
   return (
     <section>
-      <PostEditor query={rawDoc.query} variables={{ relativePath: `styleguide.mdx` }} data={rawDoc.data} />
+      <PostEditor
+        query={rawDoc.query}
+        variables={{ relativePath: `styleguide.mdx` }}
+        data={rawDoc.data}
+        docKey="styleguide"
+      />
     </section>
   );
 }

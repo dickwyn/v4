@@ -4,47 +4,34 @@ import React from 'react';
 import { useTina, tinaField } from 'tinacms/dist/react';
 import { StaticTinaMarkdown } from 'tinacms/dist/rich-text/static';
 import type { TinaMarkdownContent } from 'tinacms/dist/rich-text/static';
-import { formatDate } from '../utils/client';
 import { YouTube } from 'app/components/tina/youtube';
 import { Iframe } from 'app/components/tina/iframe';
 import { Tweet } from 'app/components/tina/tweet';
 import { Figure } from 'app/components/tina/figure';
 
-interface PostEditorProps {
+interface StyleguideEditorProps {
   query: string;
   variables: Record<string, unknown>;
   data: any;
-  docKey?: 'post' | 'styleguide';
 }
 
-export const PostEditor = ({ query, variables, data, docKey = 'post' }: PostEditorProps) => {
-  const { data: tinaData } = useTina<any>({ query, variables, data });
-  const post = tinaData?.[docKey];
+export const StyleguideEditor = ({ query, variables, data }: StyleguideEditorProps) => {
+  const { data: tinaData } = useTina({ query, variables, data });
+  const doc = (tinaData as any)?.styleguide;
+
+  if (!doc) return <p>Failed to load styleguide.</p>;
 
   return (
     <div>
-      {post?.date ? (
-        <div className="flex justify-between items-center my-2 text-sm">
-          <p
-            className="text-sm text-neutral-600 dark:text-neutral-400"
-            data-tina-field={tinaField(post, 'date')}
-          >
-            {formatDate(post.date)}
-          </p>
-        </div>
-      ) : null}
-      {post?.title ? (
-        <h1
-          className="title font-semibold text-2xl tracking-tighter"
-          data-tina-field={tinaField(post, 'title')}
-        >
-          {post.title}
+      {doc.title ? (
+        <h1 className="title font-semibold text-2xl tracking-tighter" data-tina-field={tinaField(doc, 'title')}>
+          {doc.title}
         </h1>
       ) : null}
-      <article className="blog" data-tina-field={tinaField(post, 'body')}>
-        {post.body ? (
+      <article className="blog" data-tina-field={tinaField(doc, 'body')}>
+        {doc.body ? (
           <StaticTinaMarkdown
-            content={post.body as TinaMarkdownContent | TinaMarkdownContent[]}
+            content={doc.body as TinaMarkdownContent | TinaMarkdownContent[]}
             components={{
               YouTube: (props: unknown) => (
                 <YouTube {...(props as React.ComponentProps<typeof YouTube>)} className="my-6" />
@@ -64,4 +51,4 @@ export const PostEditor = ({ query, variables, data, docKey = 'post' }: PostEdit
       </article>
     </div>
   );
-}
+};
