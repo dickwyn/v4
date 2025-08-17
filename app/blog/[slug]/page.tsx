@@ -31,14 +31,14 @@ export const generateMetadata = async (
 
   return {
     title: post.title,
-    description: post.excerpt,
+    description: post.description,
     openGraph: {
       title: post.title,
-      description: post.excerpt,
+      description: post.description,
       url: `${baseUrl}/blog/${post.slug}`,
       images: [
         {
-          url: post.coverImage?.src,
+          url: post.image,
           width: 800,
           height: 600,
         },
