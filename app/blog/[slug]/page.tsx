@@ -5,9 +5,9 @@ import { notFound } from 'next/navigation';
 import { PostEditor } from '../postEditor';
 
 type Props = {
-  params: { slug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-};
+  params: Promise<{ slug: string }>
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}
 
 export const generateStaticParams = async () => {
   const postList = await getPostList();
@@ -72,7 +72,7 @@ const BlogPage = async ({ params }: Props) => {
     notFound();
   }
 
-  return (
+   return (
     <section>
       {rawPost?.data ? (
         <PostEditor
