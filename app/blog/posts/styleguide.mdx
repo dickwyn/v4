@@ -202,3 +202,28 @@ Monospace Text wrapped in "pre" tags:
 # Media and Form Elements
 
 The remaining sections contain elements that cannot be represented in markdown. Please consult [the HTML version](https://github.com/bryanbraun/poor-mans-styleguide/blob/gh-pages/index.html), to see these elements.
+
+---
+
+# Custom MDX Components
+
+Below are examples of custom Tina components used in posts.
+
+<Figure
+  src="/images/20191123_112755.jpg"
+  alt="Roasted chicken on cast iron"
+  caption="Figure component with caption"
+  className="my-6"
+/>
+
+<YouTube id="dQw4w9WgXcQ" title="YouTube embed example" start={42} className="my-6" />
+
+<Iframe
+  src="https://codesandbox.io/embed/new?codemirror=1"
+  title="Generic iframe example"
+  height={400}
+  allowFullscreen
+  className="my-6"
+/>
+
+<Tweet id="20" theme="light" lang="en" height={320} className="my-6" />
