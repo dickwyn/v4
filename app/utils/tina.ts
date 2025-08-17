@@ -14,7 +14,7 @@ const POST_FIELDS = `
 	title
 `;
 
-const postQuery = `
+export const postQuery = `
 	query post($relativePath: String!) {
 		post(relativePath: $relativePath) {
 			${POST_FIELDS}
