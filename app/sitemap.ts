@@ -5,7 +5,7 @@ export const baseUrl = 'https://dickwyn.xyz';
 const sitemap = async () => {
   const postList = (await getPostList()).map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: post.metadata.date,
+    lastModified: post.date,
   }));
 
   const routes = ['', '/blog'].map((route) => ({
