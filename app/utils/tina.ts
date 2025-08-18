@@ -41,22 +41,36 @@ const postListQuery = `
 `;
 
 export const getPost = async (slug: string) => {
-  const posts = await getPostList();
-  const post = posts.find((p) => p.slug === slug);
+  const clientRequestObject = { query: postQuery, variables: { relativePath: `${slug}.mdx` } };
+  const response = await client.request(clientRequestObject, {}).catch(() => null);
 
+  const post = response?.data?.post;
   if (!post) {
-    return { post: null, rawPost: null };
+    return { post: null };
   }
 
-  const rawPost = await client
-    .request({ query: postQuery, variables: { relativePath: `${post.slug}.mdx` } }, {})
-    .catch(() => null);
-
-  return { post,  rawPost };
+  return {
+    ...post,
+    metadata: {
+      title: post.title,
+      date: post.date,
+      description: post.description,
+      subtitle: post.subtitle,
+      image: post.image,
+      draft: post.draft,
+    },
+    __tina: response
+      ? {
+          ...clientRequestObject,
+          data: response.data,
+        }
+      : undefined,
+  };
 };
 
 export const getPostList = async () => {
   const posts = await client.request({ query: postListQuery, variables: {} }, {});
+
   return posts.data.postConnection.edges.map((edge) => {
     return {
       ...edge.node,

@@ -67,7 +67,7 @@ export const generateMetadata = async (
 
 const BlogPage = async ({ params }: Props) => {
   const { slug } = await params;
-  const { post, rawPost } = await getPost(slug);
+  const post = await getPost(slug);
 
   if (!post) {
     notFound();
@@ -75,11 +75,11 @@ const BlogPage = async ({ params }: Props) => {
 
   return (
     <section>
-      {rawPost?.data ? (
+      {post.__tina?.data ? (
         <PostEditor
-          query={rawPost.query}
-          variables={{ relativePath: `${post.slug}.mdx` }}
-          data={rawPost.data}
+          query={post.__tina.query}
+          variables={post.__tina.variables}
+          data={post.__tina.data}
         />
       ) : (
         <p>
