@@ -1,19 +1,23 @@
 import { client } from '../tinaClient';
 
+const POST_FIELDS = `
+	__typename
+	_sys { basename breadcrumbs extension filename hasReferences path relativePath }
+	body
+	date
+	description
+	draft
+	id
+	image
+	slug
+	subtitle
+	title
+`;
+
 const postQuery = `
 	query post($relativePath: String!) {
 		post(relativePath: $relativePath) {
-			__typename
-			title
-			date
-			description
-			subtitle
-			image
-			slug
-			draft
-			body
-			_sys { filename basename hasReferences breadcrumbs path relativePath extension }
-			id
+			${POST_FIELDS}
 		}
 	}
 `;
@@ -23,17 +27,7 @@ const postListQuery = `
 		postConnection {
 			edges {
 				node {
-					__typename
-					title
-					date
-					description
-					subtitle
-					image
-					slug
-					draft
-					body
-					_sys { filename basename hasReferences breadcrumbs path relativePath extension }
-					id
+					${POST_FIELDS}
 				}
 			}
 		}
@@ -41,33 +35,31 @@ const postListQuery = `
 `;
 
 export const getPost = async (slug: string) => {
-  const posts = await getPostList();
-  const post = posts.find((p) => p.slug === slug);
+  const clientRequestObject = { query: postQuery, variables: { relativePath: `${slug}.mdx` } };
+  const response = await client.request(clientRequestObject, {}).catch(() => null);
 
+  const post = response?.data?.post;
   if (!post) {
-    return { post: null, rawPost: null };
+    return null;
   }
 
-  const rawPost = await client
-    .request({ query: postQuery, variables: { relativePath: `${post.slug}.mdx` } }, {})
-    .catch(() => null);
-
-  return { post,  rawPost };
+  return {
+    ...post,
+    __tina: response
+      ? {
+          ...clientRequestObject,
+          data: response.data,
+        }
+      : undefined,
+  };
 };
 
 export const getPostList = async () => {
   const posts = await client.request({ query: postListQuery, variables: {} }, {});
+
   return posts.data.postConnection.edges.map((edge) => {
     return {
       ...edge.node,
-      metadata: {
-        title: edge.node.title,
-        date: edge.node.date,
-        description: edge.node.description,
-        subtitle: edge.node.subtitle,
-        image: edge.node.image,
-        draft: edge.node.draft,
-      },
     };
   });
 };

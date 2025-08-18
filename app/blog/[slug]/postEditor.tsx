@@ -1,15 +1,14 @@
-"use client";
+'use client';
 
 import React from 'react';
-import { useTina, tinaField } from 'tinacms/dist/react';
-import { StaticTinaMarkdown } from 'tinacms/dist/rich-text/static';
-import type { TinaMarkdownContent } from 'tinacms/dist/rich-text/static';
-import type { PostQuery } from '../../tina/__generated__/types';
-import { formatDate } from '../utils/client';
-import { YouTube } from 'app/components/tina/youtube';
+import { Figure } from 'app/components/tina/figure';
 import { Iframe } from 'app/components/tina/iframe';
 import { Tweet } from 'app/components/tina/tweet';
-import { Figure } from 'app/components/tina/figure';
+import { YouTube } from 'app/components/tina/youtube';
+import { formatDate } from 'app/utils/client';
+import { PostQuery } from 'tina/__generated__/types';
+import { tinaField, useTina } from 'tinacms/dist/react';
+import { StaticTinaMarkdown, type TinaMarkdownContent } from 'tinacms/dist/rich-text/static';
 
 interface PostEditorProps {
   query: string;
@@ -18,8 +17,11 @@ interface PostEditorProps {
 }
 
 export const PostEditor = ({ query, variables, data }: PostEditorProps) => {
-  const { data: tinaData } = useTina<PostQuery>({ query, variables, data });
-  const post = tinaData?.post;
+  const {
+    data: { post },
+  } = useTina<PostQuery>({ query, variables, data });
+
+  if (!post) return null;
 
   return (
     <div>
@@ -60,4 +62,4 @@ export const PostEditor = ({ query, variables, data }: PostEditorProps) => {
       </article>
     </div>
   );
-}
+};

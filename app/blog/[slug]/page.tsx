@@ -3,7 +3,7 @@ import { getPost, getPostList } from 'app/utils/tina';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import { PostEditor } from '../postEditor';
+import { PostEditor } from './postEditor';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -23,7 +23,7 @@ export const generateMetadata = async (
   _parent: ResolvingMetadata
 ): Promise<Metadata> => {
   const { slug } = await params;
-  const { post } = await getPost(slug);
+  const post = await getPost(slug);
 
   if (!post) {
     return {};
@@ -48,13 +48,13 @@ export const generateMetadata = async (
       'application/ld+json': JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
-        headline: post.metadata.title,
-        datePublished: post.metadata.date,
-        dateModified: post.metadata.date,
-        description: post.metadata.description,
-        image: post.metadata.image
-          ? `${baseUrl}${post.metadata.image}`
-          : `/og?title=${encodeURIComponent(post.metadata.title)}`,
+        headline: post.title,
+        datePublished: post.date,
+        dateModified: post.date,
+        description: post.description,
+        image: post.image
+          ? `${baseUrl}${post.image}`
+          : `/og?title=${encodeURIComponent(post.title)}`,
         url: `${baseUrl}/blog/${post.slug}`,
         author: {
           '@type': 'Person',
@@ -67,7 +67,7 @@ export const generateMetadata = async (
 
 const BlogPage = async ({ params }: Props) => {
   const { slug } = await params;
-  const { post, rawPost } = await getPost(slug);
+  const post = await getPost(slug);
 
   if (!post) {
     notFound();
@@ -75,11 +75,11 @@ const BlogPage = async ({ params }: Props) => {
 
   return (
     <section>
-      {rawPost?.data ? (
+      {post.__tina?.data ? (
         <PostEditor
-          query={rawPost.query}
-          variables={{ relativePath: `${post.slug}.mdx` }}
-          data={rawPost.data}
+          query={post.__tina.query}
+          variables={post.__tina.variables}
+          data={post.__tina.data}
         />
       ) : (
         <p>
