@@ -1,6 +1,7 @@
 import './global.css';
 
 import { ReactNode } from 'react';
+import Script from 'next/script';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
@@ -59,6 +60,12 @@ export default function Layout({ children }: { children: ReactNode }) {
           <Navbar />
           {children}
           <Footer />
+          <Script
+            src="https://analytics.dickwyn.xyz/script.js"
+            data-website-id="a42be48d-6f70-475b-8f23-97401e6bea16"
+            strategy="afterInteractive"
+            defer
+          />
           <Analytics />
           <SpeedInsights />
         </main>
