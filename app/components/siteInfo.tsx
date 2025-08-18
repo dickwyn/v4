@@ -15,6 +15,7 @@ Looking for something?
 👨‍💻 https://www.github.com/dickwyn
 📄 https://dickwyn.xyz/dickwyn-resume.pdf
 🐛 https://dickwyn.xyz/debug
+💅 https://dickwyn.xyz/styleguide
 
 built: ${process.env.BUILD_TIMESTAMP}`,
         'font-family:monospace;'
