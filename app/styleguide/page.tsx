@@ -1,6 +1,5 @@
 import { PostEditor } from 'app/blog/[slug]/postEditor';
 import { getPost } from 'app/utils/tina';
-import { notFound } from 'next/navigation';
 
 export const metadata = {
   title: 'Style Guide',
