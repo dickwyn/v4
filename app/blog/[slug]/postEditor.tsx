@@ -5,11 +5,10 @@ import { Figure } from 'app/components/tina/figure';
 import { Iframe } from 'app/components/tina/iframe';
 import { Tweet } from 'app/components/tina/tweet';
 import { YouTube } from 'app/components/tina/youtube';
+import { formatDate } from 'app/utils/client';
+import { PostQuery } from 'tina/__generated__/types';
 import { tinaField, useTina } from 'tinacms/dist/react';
 import { StaticTinaMarkdown, type TinaMarkdownContent } from 'tinacms/dist/rich-text/static';
-
-import type { PostQuery } from '../../../tina/__generated__/types';
-import { formatDate } from '../../utils/client';
 
 interface PostEditorProps {
   query: string;
