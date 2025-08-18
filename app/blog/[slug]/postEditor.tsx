@@ -8,8 +8,8 @@ import { YouTube } from 'app/components/tina/youtube';
 import { tinaField, useTina } from 'tinacms/dist/react';
 import { StaticTinaMarkdown, type TinaMarkdownContent } from 'tinacms/dist/rich-text/static';
 
-import type { PostQuery } from '../../tina/__generated__/types';
-import { formatDate } from '../utils/client';
+import type { PostQuery } from '../../../tina/__generated__/types';
+import { formatDate } from '../../utils/client';
 
 interface PostEditorProps {
   query: string;

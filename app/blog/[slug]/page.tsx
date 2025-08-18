@@ -3,7 +3,7 @@ import { getPost, getPostList } from 'app/utils/tina';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import { PostEditor } from '../postEditor';
+import { PostEditor } from './postEditor';
 
 type Props = {
   params: Promise<{ slug: string }>;
