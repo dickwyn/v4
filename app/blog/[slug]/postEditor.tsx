@@ -18,8 +18,11 @@ interface PostEditorProps {
 }
 
 export const PostEditor = ({ query, variables, data }: PostEditorProps) => {
-  const { data: tinaData } = useTina<PostQuery>({ query, variables, data });
-  const post = tinaData?.post;
+  const {
+    data: { post },
+  } = useTina<PostQuery>({ query, variables, data });
+
+  if (!post) return null;
 
   return (
     <div>
