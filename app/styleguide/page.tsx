@@ -1,4 +1,4 @@
-import { PostEditor } from 'app/blog/postEditor';
+import { PostEditor } from 'app/blog/[slug]/postEditor';
 import { client } from 'app/tinaClient';
 import { postQuery } from 'app/utils/tina';
 
