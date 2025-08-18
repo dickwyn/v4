@@ -1,6 +1,6 @@
 import { PostEditor } from 'app/blog/[slug]/postEditor';
-import { client } from 'app/tinaClient';
-import { postQuery } from 'app/utils/tina';
+import { getPost } from 'app/utils/tina';
+import { notFound } from 'next/navigation';
 
 export const metadata = {
   title: 'Style Guide',
@@ -8,12 +8,15 @@ export const metadata = {
 };
 
 const StyleGuide = async () => {
-  const variables: Record<string, string> = { relativePath: 'styleguide.mdx' };
-  const raw = await client.request({ query: postQuery, variables }, {}).catch(() => null);
+  const post = await getPost('styleguide');
 
   return (
     <section>
-      <PostEditor query={postQuery} variables={variables} data={raw?.data} />
+      <PostEditor
+        query={post.__tina.query}
+        variables={post.__tina.variables}
+        data={post.__tina.data}
+      />
     </section>
   );
 };
