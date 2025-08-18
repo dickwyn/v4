@@ -23,7 +23,7 @@ export const generateMetadata = async (
   _parent: ResolvingMetadata
 ): Promise<Metadata> => {
   const { slug } = await params;
-  const { post } = await getPost(slug);
+  const post = await getPost(slug);
 
   if (!post) {
     return {};
@@ -48,13 +48,13 @@ export const generateMetadata = async (
       'application/ld+json': JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
-        headline: post.metadata.title,
-        datePublished: post.metadata.date,
-        dateModified: post.metadata.date,
-        description: post.metadata.description,
-        image: post.metadata.image
-          ? `${baseUrl}${post.metadata.image}`
-          : `/og?title=${encodeURIComponent(post.metadata.title)}`,
+        headline: post.title,
+        datePublished: post.date,
+        dateModified: post.date,
+        description: post.description,
+        image: post.image
+          ? `${baseUrl}${post.image}`
+          : `/og?title=${encodeURIComponent(post.title)}`,
         url: `${baseUrl}/blog/${post.slug}`,
         author: {
           '@type': 'Person',
