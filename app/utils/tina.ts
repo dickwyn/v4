@@ -1,19 +1,23 @@
 import { client } from '../tinaClient';
 
+const POST_FIELDS = `
+	__typename
+	_sys { basename breadcrumbs extension filename hasReferences path relativePath }
+	body
+	date
+	description
+	draft
+	id
+	image
+	slug
+	subtitle
+	title
+`;
+
 const postQuery = `
 	query post($relativePath: String!) {
 		post(relativePath: $relativePath) {
-			__typename
-			title
-			date
-			description
-			subtitle
-			image
-			slug
-			draft
-			body
-			_sys { filename basename hasReferences breadcrumbs path relativePath extension }
-			id
+			${POST_FIELDS}
 		}
 	}
 `;
@@ -23,17 +27,7 @@ const postListQuery = `
 		postConnection {
 			edges {
 				node {
-					__typename
-					title
-					date
-					description
-					subtitle
-					image
-					slug
-					draft
-					body
-					_sys { filename basename hasReferences breadcrumbs path relativePath extension }
-					id
+					${POST_FIELDS}
 				}
 			}
 		}
