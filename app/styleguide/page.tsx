@@ -8,16 +8,12 @@ export const metadata = {
 };
 
 const StyleGuide = async () => {
-  const variables = { relativePath: 'styleguide.mdx' } as const;
+  const variables: Record<string, string> = { relativePath: 'styleguide.mdx' };
   const raw = await client.request({ query: postQuery, variables }, {}).catch(() => null);
 
   return (
     <section>
-      <PostEditor
-        query={postQuery}
-        variables={variables as unknown as Record<string, unknown>}
-        data={raw?.data}
-      />
+      <PostEditor query={postQuery} variables={variables} data={raw?.data} />
     </section>
   );
 };
