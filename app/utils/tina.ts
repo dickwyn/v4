@@ -1,4 +1,27 @@
+import type { PostQuery } from 'tina/__generated__/types';
+
 import { client } from '../tinaClient';
+
+type TinaPost = {
+  __typename?: string;
+  _sys?: unknown;
+  body?: unknown;
+  date: string;
+  description?: string;
+  draft?: boolean;
+  id: string;
+  image?: string;
+  slug: string;
+  subtitle?: string;
+  title: string;
+};
+
+type Neighbor = Pick<TinaPost, 'slug' | 'title' | 'date'>;
+
+type TinaPostResponse = { data: { post: TinaPost } };
+type TinaPostConnectionResponse = {
+  data: { postConnection: { edges: Array<{ node: TinaPost }> } };
+};
 
 const POST_FIELDS = `
 	__typename
@@ -34,32 +57,77 @@ const postListQuery = `
 	}
 `;
 
-export const getPost = async (slug: string) => {
+export const getPost = async (
+  slug: string
+): Promise<
+  | (TinaPost & {
+      newerPost: Neighbor | null;
+      olderPost: Neighbor | null;
+      __tina?: { query: string; variables: Record<string, unknown>; data: PostQuery };
+    })
+  | null
+> => {
   const clientRequestObject = { query: postQuery, variables: { relativePath: `${slug}.mdx` } };
-  const response = await client.request(clientRequestObject, {}).catch(() => null);
+  const response = (await client.request(clientRequestObject, {}).catch(() => null)) as
+    | (TinaPostResponse & { query: string; variables: Record<string, unknown> })
+    | null;
 
-  const post = response?.data?.post;
+  const post = response?.data?.post as TinaPost | undefined;
   if (!post) {
     return null;
   }
 
+  let newerPost: Neighbor | null = null;
+  let olderPost: Neighbor | null = null;
+  try {
+    const listResponse = (await client.request(
+      { query: postListQuery, variables: {} },
+      {}
+    )) as TinaPostConnectionResponse;
+    const allPosts: TinaPost[] = (listResponse?.data?.postConnection?.edges ?? []).map(
+      (e) => e.node
+    );
+    const sorted = allPosts
+      .filter((p) => !p.draft)
+      .sort((a, b) => (new Date(a.date) > new Date(b.date) ? -1 : 1));
+
+    const idx = sorted.findIndex((p) => p.slug === post.slug);
+    if (idx > 0) {
+      newerPost = {
+        slug: sorted[idx - 1].slug,
+        title: sorted[idx - 1].title,
+        date: sorted[idx - 1].date,
+      };
+    }
+    if (idx >= 0 && idx < sorted.length - 1) {
+      olderPost = {
+        slug: sorted[idx + 1].slug,
+        title: sorted[idx + 1].title,
+        date: sorted[idx + 1].date,
+      };
+    }
+  } catch {
+    /* empty */
+  }
+
   return {
     ...post,
+    newerPost,
+    olderPost,
     __tina: response
       ? {
           ...clientRequestObject,
-          data: response.data,
+          data: response.data as unknown as PostQuery,
         }
       : undefined,
   };
 };
 
-export const getPostList = async () => {
-  const posts = await client.request({ query: postListQuery, variables: {} }, {});
+export const getPostList = async (): Promise<TinaPost[]> => {
+  const posts = (await client.request(
+    { query: postListQuery, variables: {} },
+    {}
+  )) as TinaPostConnectionResponse;
 
-  return posts.data.postConnection.edges.map((edge) => {
-    return {
-      ...edge.node,
-    };
-  });
+  return posts.data.postConnection.edges.map((edge) => ({ ...edge.node }));
 };
