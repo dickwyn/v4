@@ -10,7 +10,9 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   {
-    ignores: ['.next/', 'node_modules/', 'dist/', 'build/', 'tina/__generated__/'],
+    ignores: [
+      '.next/', 'node_modules/', 'dist/', 'build/', 'public/admin/', 'tina/__generated__/',
+    ],
   },
   {
     files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
