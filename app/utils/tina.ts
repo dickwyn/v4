@@ -16,6 +16,10 @@ interface PostWithNeighbors extends Post {
   __tina: { query: string; variables: { relativePath: string }; data: PostQuery };
 }
 
+interface PostResponse {
+  data: PostQuery;
+}
+
 interface PostListResponse {
   data: { postConnection: { edges: Array<{ node: Post }> } };
 }
@@ -56,9 +60,9 @@ const postListQuery = `
 
 export const getPost = async (slug: string): Promise<PostWithNeighbors | null> => {
   const clientRequestObject = { query: postQuery, variables: { relativePath: `${slug}.mdx` } };
-  const response = (await client.request(clientRequestObject, {}).catch(() => null)) as {
-    data: PostQuery;
-  } | null;
+  const response = (await client
+    .request(clientRequestObject, {})
+    .catch(() => null)) as PostResponse | null;
 
   if (!response) {
     return null;
