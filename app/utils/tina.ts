@@ -80,17 +80,7 @@ export const getPost = async (
   let newerPost: Neighbor | null = null;
   let olderPost: Neighbor | null = null;
   try {
-    const listResponse = (await client.request(
-      { query: postListQuery, variables: {} },
-      {}
-    )) as TinaPostConnectionResponse;
-    const allPosts: TinaPost[] = (listResponse?.data?.postConnection?.edges ?? []).map(
-      (e) => e.node
-    );
-    const sorted = allPosts
-      .filter((p) => !p.draft)
-      .sort((a, b) => (new Date(a.date) > new Date(b.date) ? -1 : 1));
-
+    const sorted = (await getPostList()).filter((p) => !p.draft);
     const idx = sorted.findIndex((p) => p.slug === post.slug);
     if (idx > 0) {
       newerPost = {
@@ -124,10 +114,12 @@ export const getPost = async (
 };
 
 export const getPostList = async (): Promise<TinaPost[]> => {
-  const posts = (await client.request(
+  const postList = (await client.request(
     { query: postListQuery, variables: {} },
     {}
   )) as TinaPostConnectionResponse;
 
-  return posts.data.postConnection.edges.map((edge) => ({ ...edge.node }));
+  return (postList?.data?.postConnection?.edges ?? [])
+    .map((edge) => ({ ...edge.node }))
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 };

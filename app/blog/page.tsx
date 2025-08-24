@@ -15,12 +15,6 @@ const Blog = async () => {
     <section className="grid gap-8">
       {postList
         .filter((post) => !post.draft)
-        .sort((a, b) => {
-          if (new Date(a.date) > new Date(b.date)) {
-            return -1;
-          }
-          return 1;
-        })
         .map((post) => (
           <Link
             key={post.slug}

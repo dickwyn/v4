@@ -6,12 +6,6 @@ export const GET = async () => {
   const postList = await getPostList();
 
   const itemsXml = postList
-    .sort((a, b) => {
-      if (new Date(a.date) > new Date(b.date)) {
-        return -1;
-      }
-      return 1;
-    })
     .map(
       (post) =>
         `<item>
