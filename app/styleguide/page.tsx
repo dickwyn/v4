@@ -14,18 +14,13 @@ const StyleGuide = async () => {
     notFound();
   }
 
-  const { __tina } = post;
+  const {
+    __tina: { query, variables, data },
+  } = post;
 
   return (
     <section>
-      {__tina?.data ? (
-        <PostEditor query={__tina.query} variables={__tina.variables} data={__tina.data} />
-      ) : (
-        <p>
-          Failed to load post data. The post may have been deleted, moved, or there was a network
-          error. Please try again later.
-        </p>
-      )}
+      <PostEditor query={query} variables={variables} data={data} />
     </section>
   );
 };

@@ -50,7 +50,7 @@ export const getPost = async (
   | (Post & {
       newerPost: Neighbor | null;
       olderPost: Neighbor | null;
-      __tina?: { query: string; variables: Record<string, unknown>; data: PostQuery };
+      __tina: { query: string; variables: Record<string, unknown>; data: PostQuery };
     })
   | null
 > => {
@@ -59,13 +59,15 @@ export const getPost = async (
     | ({ data: PostQuery } & { query: string; variables: Record<string, unknown> })
     | null;
 
-  const post = response?.data?.post as Post | undefined;
-  if (!post) {
+  if (!response) {
     return null;
   }
 
+  const post = response.data.post;
+
   let newerPost: Neighbor | null = null;
   let olderPost: Neighbor | null = null;
+
   try {
     const sorted = (await getPostList()).filter((p) => !p.draft);
     const idx = sorted.findIndex((p) => p.slug === post.slug);
@@ -91,12 +93,10 @@ export const getPost = async (
     ...post,
     newerPost,
     olderPost,
-    __tina: response
-      ? {
-          ...clientRequestObject,
-          data: response.data as unknown as PostQuery,
-        }
-      : undefined,
+    __tina: {
+      ...clientRequestObject,
+      data: response.data,
+    },
   };
 };
 
