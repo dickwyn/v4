@@ -1,4 +1,28 @@
+import type { PostQuery } from 'tina/__generated__/types';
+
 import { client } from '../tinaClient';
+
+type Post = NonNullable<PostQuery['post']>;
+
+interface Neighbor {
+  slug: Post['slug'];
+  title: Post['title'];
+  date: Post['date'];
+}
+
+interface PostWithNeighbors extends Post {
+  newerPost: Neighbor | null;
+  olderPost: Neighbor | null;
+  __tina: { query: string; variables: { relativePath: string }; data: PostQuery };
+}
+
+interface PostResponse {
+  data: PostQuery;
+}
+
+interface PostListResponse {
+  data: { postConnection: { edges: Array<{ node: Post }> } };
+}
 
 const POST_FIELDS = `
 	__typename
@@ -34,32 +58,61 @@ const postListQuery = `
 	}
 `;
 
-export const getPost = async (slug: string) => {
+export const getPost = async (slug: string): Promise<PostWithNeighbors | null> => {
   const clientRequestObject = { query: postQuery, variables: { relativePath: `${slug}.mdx` } };
-  const response = await client.request(clientRequestObject, {}).catch(() => null);
+  const response = (await client
+    .request(clientRequestObject, {})
+    .catch(() => null)) as PostResponse | null;
 
-  const post = response?.data?.post;
-  if (!post) {
+  if (!response) {
     return null;
+  }
+
+  const post = response.data.post;
+
+  let newerPost: Neighbor | null = null;
+  let olderPost: Neighbor | null = null;
+
+  try {
+    const sorted = (await getPostList()).filter((p) => !p.draft);
+    const idx = sorted.findIndex((p) => p.slug === post.slug);
+    if (idx > 0) {
+      newerPost = {
+        slug: sorted[idx - 1].slug,
+        title: sorted[idx - 1].title,
+        date: sorted[idx - 1].date,
+      };
+    }
+    if (idx >= 0 && idx < sorted.length - 1) {
+      olderPost = {
+        slug: sorted[idx + 1].slug,
+        title: sorted[idx + 1].title,
+        date: sorted[idx + 1].date,
+      };
+    }
+  } catch {
+    /* empty */
   }
 
   return {
     ...post,
-    __tina: response
-      ? {
-          ...clientRequestObject,
-          data: response.data,
-        }
-      : undefined,
+    newerPost,
+    olderPost,
+    __tina: {
+      query: clientRequestObject.query,
+      variables: clientRequestObject.variables,
+      data: response.data,
+    },
   };
 };
 
-export const getPostList = async () => {
-  const posts = await client.request({ query: postListQuery, variables: {} }, {});
+export const getPostList = async (): Promise<Post[]> => {
+  const postList = (await client.request(
+    { query: postListQuery, variables: {} },
+    {}
+  )) as PostListResponse;
 
-  return posts.data.postConnection.edges.map((edge) => {
-    return {
-      ...edge.node,
-    };
-  });
+  return (postList?.data?.postConnection?.edges ?? [])
+    .map((edge) => ({ ...edge.node }))
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 };

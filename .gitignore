@@ -38,4 +38,5 @@ yarn-error.log*
 next-env.d.ts
 
 # tina cms
+public/admin/
 tina/__generated__

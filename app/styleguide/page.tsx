@@ -1,5 +1,6 @@
 import { PostEditor } from 'app/blog/[slug]/postEditor';
 import { getPost } from 'app/utils/tina';
+import { notFound } from 'next/navigation';
 
 export const metadata = {
   title: 'Style Guide',
@@ -9,13 +10,17 @@ export const metadata = {
 const StyleGuide = async () => {
   const post = await getPost('styleguide');
 
+  if (!post) {
+    notFound();
+  }
+
+  const {
+    __tina: { query, variables, data },
+  } = post;
+
   return (
     <section>
-      <PostEditor
-        query={post.__tina.query}
-        variables={post.__tina.variables}
-        data={post.__tina.data}
-      />
+      <PostEditor query={query} variables={variables} data={data} />
     </section>
   );
 };
