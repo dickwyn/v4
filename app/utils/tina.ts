@@ -4,17 +4,21 @@ import { client } from '../tinaClient';
 
 type Post = NonNullable<PostQuery['post']>;
 
-type Neighbor = Pick<Post, 'slug' | 'title' | 'date'>;
+interface Neighbor {
+  slug: Post['slug'];
+  title: Post['title'];
+  date: Post['date'];
+}
 
-type PostWithNeighbors = Post & {
+interface PostWithNeighbors extends Post {
   newerPost: Neighbor | null;
   olderPost: Neighbor | null;
   __tina: { query: string; variables: { relativePath: string }; data: PostQuery };
-};
+}
 
-type PostListResponse = {
+interface PostListResponse {
   data: { postConnection: { edges: Array<{ node: Post }> } };
-};
+}
 
 const POST_FIELDS = `
 	__typename
