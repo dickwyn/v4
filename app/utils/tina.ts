@@ -6,6 +6,12 @@ type Post = NonNullable<PostQuery['post']>;
 
 type Neighbor = Pick<Post, 'slug' | 'title' | 'date'>;
 
+type PostWithNeighbors = Post & {
+  newerPost: Neighbor | null;
+  olderPost: Neighbor | null;
+  __tina: { query: string; variables: { relativePath: string }; data: PostQuery };
+};
+
 type PostListResponse = {
   data: { postConnection: { edges: Array<{ node: Post }> } };
 };
@@ -44,20 +50,11 @@ const postListQuery = `
 	}
 `;
 
-export const getPost = async (
-  slug: string
-): Promise<
-  | (Post & {
-      newerPost: Neighbor | null;
-      olderPost: Neighbor | null;
-      __tina: { query: string; variables: Record<string, unknown>; data: PostQuery };
-    })
-  | null
-> => {
+export const getPost = async (slug: string): Promise<PostWithNeighbors | null> => {
   const clientRequestObject = { query: postQuery, variables: { relativePath: `${slug}.mdx` } };
-  const response = (await client.request(clientRequestObject, {}).catch(() => null)) as
-    | ({ data: PostQuery } & { query: string; variables: Record<string, unknown> })
-    | null;
+  const response = (await client.request(clientRequestObject, {}).catch(() => null)) as {
+    data: PostQuery;
+  } | null;
 
   if (!response) {
     return null;
@@ -94,7 +91,8 @@ export const getPost = async (
     newerPost,
     olderPost,
     __tina: {
-      ...clientRequestObject,
+      query: clientRequestObject.query,
+      variables: clientRequestObject.variables,
       data: response.data,
     },
   };
