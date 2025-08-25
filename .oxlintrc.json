@@ -1,0 +1,121 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": [
+    "oxc",
+    "typescript",
+    "react",
+    "react_perf",
+    "nextjs",
+    "jsx-a11y",
+    "import",
+    "unicorn"
+  ],
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "ignorePatterns": [
+    ".next",
+    "node_modules",
+    "dist",
+    "build",
+    "public/admin",
+    "tina/__generated__"
+  ],
+  "settings": {
+    "next": { "rootDir": "." },
+    "react": {
+      "linkComponents": ["Link"]
+    },
+    "jsx-a11y": {
+      "components": {
+        "Link": "a",
+        "Button": "button"
+      }
+    }
+  },
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn",
+    "perf": "warn",
+    "style": "off",
+    "pedantic": "warn",
+    "restriction": "off",
+    "nursery": "off"
+  },
+  "rules": {
+    "no-console": "warn",
+    "no-debugger": "error",
+
+    "react/rules-of-hooks": "error",
+    "react/exhaustive-deps": "warn",
+    "react/jsx-key": "error",
+    "react/jsx-no-target-blank": "error",
+    "react/self-closing-comp": "warn",
+    "react/jsx-curly-brace-presence": [
+      "warn",
+      { "props": "never", "children": "never", "propElementValues": "always" }
+    ],
+    "react/react-in-jsx-scope": "off",
+
+    "nextjs/google-font-display": "error",
+    "nextjs/google-font-preconnect": "warn",
+    "nextjs/no-before-interactive-script-outside-document": "error",
+    "nextjs/no-duplicate-head": "error",
+    "nextjs/no-head-element": "error",
+    "nextjs/no-sync-scripts": "error",
+    "nextjs/no-html-link-for-pages": "error",
+
+    "jsx-a11y/alt-text": "warn",
+    "jsx-a11y/anchor-is-valid": "warn",
+    "jsx-a11y/aria-props": "warn",
+    "jsx-a11y/no-redundant-roles": "warn",
+
+    "import/no-cycle": "error",
+    "import/no-duplicates": "warn",
+    "import/no-unassigned-import": [
+      "off",
+      {
+        "allow": [
+          "**/*.css",
+          "**/*.scss",
+          "**/*.sass",
+          "**/*.less",
+          "**/*.pcss",
+          "./app/global.css",
+          "./global.css"
+        ]
+      }
+    ],
+
+    "typescript/no-explicit-any": "error",
+    "typescript/consistent-type-imports": [
+      "warn",
+      { "prefer": "type-imports", "fixStyle": "inline-type-imports" }
+    ],
+    "typescript/array-type": ["warn", { "default": "generic" }],
+    "typescript/no-empty-interface": "warn",
+    "typescript/no-namespace": "error",
+    "typescript/no-non-null-assertion": "warn",
+
+    "unicorn/prefer-node-protocol": "warn"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.{ts,tsx}"],
+      "plugins": ["typescript"],
+      "rules": {
+        "typescript/no-explicit-any": "error"
+      }
+    },
+    {
+      "files": [
+        "**/*.config.{js,cjs,mjs,ts}",
+        "next.config.*",
+        "postcss.config.*",
+        "tailwind.config.*"
+      ],
+      "env": { "node": true }
+    }
+  ]
+}
