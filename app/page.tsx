@@ -31,9 +31,9 @@ export default function Page() {
         </p>
         <p>
           beyond work, i&apos;m currently into weightlifting and running as i train my way to a full
-          marathon. my other interests include airplanes, photography, videography, traveling, and
-          trying out new food spots - basically anything that mixes curiosity with a bit of
-          adventure.
+          marathon. my other interests include formula 1, airplanes, photography, videography,
+          traveling, and trying out new food spots - basically anything that mixes curiosity with a
+          bit of adventure.
         </p>
       </section>
     </section>
