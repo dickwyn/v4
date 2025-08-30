@@ -1,10 +1,10 @@
 import './global.css';
 
-import { ReactNode } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
 import Script from 'next/script';
+import { ReactNode } from 'react';
 
 import Footer from './components/footer';
 import { Navbar } from './components/nav';
@@ -73,7 +73,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           <Footer />
           <Script
             src="https://analytics.dickwyn.xyz/script.js"
-            data-website-id="a42be48d-6f70-475b-8f23-97401e6bea16"
+            data-website-id="a38ba9c3-b3ac-4d35-a975-43dc25892827"
             strategy="afterInteractive"
             defer
           />
