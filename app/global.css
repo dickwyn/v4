@@ -7,30 +7,7 @@
   --color-brand: #d84c4c;
 }
 
-::selection {
-  background-color: #47a3f3;
-  color: #110f0f;
-}
-
-:root {
-  --sh-class: #2d5e9d;
-  --sh-identifier: #354150;
-  --sh-sign: #8996a3;
-  --sh-string: #007f7a;
-  --sh-keyword: #e02518;
-  --sh-comment: #a19595;
-  --sh-jsxliterals: #6266d1;
-  --sh-property: #e25a1c;
-  --sh-entity: #e25a1c;
-}
-
 @media (prefers-color-scheme: dark) {
-  :root {
-    --sh-class: #4c97f8;
-    --sh-identifier: white;
-    --sh-keyword: #f47067;
-    --sh-string: #0fa295;
-  }
   html {
     color-scheme: dark;
   }
@@ -77,9 +54,11 @@ code span {
 .blog h3,
 .blog h4,
 .blog h5,
-.blog h6, 
+.blog h6,
 .blog p {
-  font-feature-settings: 'liga' 1, 'kern' 1;
+  font-feature-settings:
+    'liga' 1,
+    'kern' 1;
 }
 
 .anchor:hover {
