@@ -17,127 +17,6 @@ html {
   min-width: 360px;
 }
 
-pre {
-  @apply bg-neutral-50 dark:bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-900 py-2 px-3 text-sm;
-}
-
-code {
-  @apply px-1 py-0.5 rounded-lg;
-}
-
-pre code {
-  @apply p-0;
-  border: initial;
-  line-height: 1.5;
-}
-
-code span {
-  @apply font-medium;
-}
-
-.blog .anchor {
-  @apply absolute invisible no-underline;
-
-  margin-left: -1em;
-  padding-right: 0.5em;
-  width: 80%;
-  max-width: 700px;
-  cursor: pointer;
-}
-
-.blog {
-  @apply font-serif;
-}
-
-.blog h1,
-.blog h2,
-.blog h3,
-.blog h4,
-.blog h5,
-.blog h6,
-.blog p {
-  font-feature-settings:
-    'liga' 1,
-    'kern' 1;
-}
-
-.anchor:hover {
-  @apply visible;
-}
-
-.blog a {
-  @apply underline transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
-}
-
-.blog .anchor:after {
-  @apply text-neutral-300 dark:text-neutral-700;
-  content: '#';
-}
-
-.blog *:hover > .anchor {
-  @apply visible;
-}
-
-.blog img {
-  /* Don't apply styles to next/image */
-  @apply m-0;
-}
-
-.blog p {
-  @apply my-4 text-neutral-800 dark:text-neutral-200 leading-7;
-}
-
-.blog h1 {
-  @apply text-4xl font-medium tracking-tight mt-6 mb-2;
-}
-
-.blog h2 {
-  @apply text-xl font-medium tracking-tight mt-6 mb-2;
-}
-
-.blog h3 {
-  @apply text-xl font-medium tracking-tight mt-6 mb-2;
-}
-
-.blog h4 {
-  @apply text-lg font-medium tracking-tight mt-6 mb-2;
-}
-
-.blog strong {
-  @apply font-medium;
-}
-
-.blog ul {
-  @apply list-disc pl-6;
-}
-
-.blog ol {
-  @apply list-decimal pl-6;
-}
-
-.blog > :first-child {
-  /* Override removing top margin, causing layout shift */
-  margin-top: 1.25em !important;
-  margin-bottom: 1.25em !important;
-}
-
-pre::-webkit-scrollbar {
-  display: none;
-}
-
-pre {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
-/* Remove Safari input shadow on mobile */
-input[type='text'],
-input[type='email'] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
 table {
   display: block;
   max-width: fit-content;
@@ -145,22 +24,132 @@ table {
   white-space: nowrap;
 }
 
-.title {
-  text-wrap: balance;
-}
-
 a {
   @apply underline decoration-brand underline-offset-3;
+
+  &:hover {
+    @apply no-underline text-brand;
+  }
+
+  &.blog-link {
+    @apply no-underline;
+
+    &:hover {
+      @apply border-brand;
+    }
+  }
 }
 
-a:hover {
-  @apply no-underline text-brand;
+pre {
+  @apply bg-neutral-50 dark:bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-900 py-2 px-3 text-sm;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  code {
+    @apply p-0;
+    border: initial;
+    line-height: 1.5;
+  }
 }
 
-a.blog-link {
-  @apply no-underline;
+code {
+  @apply px-1 py-0.5 rounded-lg;
+
+  span {
+    @apply font-medium;
+  }
 }
 
-a.blog-link:hover {
-  @apply border-brand;
+.blog {
+  @apply font-serif;
+
+  .anchor {
+    @apply absolute invisible no-underline;
+
+    margin-left: -1em;
+    padding-right: 0.5em;
+    width: 80%;
+    max-width: 700px;
+    cursor: pointer;
+
+    &:hover {
+      @apply visible;
+    }
+
+    &:after {
+      @apply text-neutral-300 dark:text-neutral-700;
+      content: '#';
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    font-feature-settings:
+      'liga' 1,
+      'kern' 1;
+  }
+
+  a {
+    @apply underline transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
+  }
+
+  *:hover > .anchor {
+    @apply visible;
+  }
+
+  img {
+    /* Don't apply styles to next/image */
+    @apply m-0;
+  }
+
+  p {
+    @apply my-4 text-neutral-800 dark:text-neutral-200 leading-7;
+  }
+
+  h1 {
+    @apply text-4xl font-medium tracking-tight mt-6 mb-2;
+  }
+
+  h2 {
+    @apply text-xl font-medium tracking-tight mt-6 mb-2;
+  }
+
+  h3 {
+    @apply text-xl font-medium tracking-tight mt-6 mb-2;
+  }
+
+  h4 {
+    @apply text-lg font-medium tracking-tight mt-6 mb-2;
+  }
+
+  strong {
+    @apply font-medium;
+  }
+
+  ul {
+    @apply list-disc pl-6;
+  }
+
+  ol {
+    @apply list-decimal pl-6;
+  }
+
+  > :first-child {
+    /* Override removing top margin, causing layout shift */
+    margin-top: 1.25em !important;
+    margin-bottom: 1.25em !important;
+  }
+
+  .title {
+    text-wrap: balance;
+  }
 }
