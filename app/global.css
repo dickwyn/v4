@@ -1,19 +1,18 @@
 @import 'tailwindcss';
 
 @theme {
-  --default-font-family: var(--font-inter);
-  --default-mono-font-family: var(--font-fira-code);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-fira-code);
+  --font-serif: var(--font-literata);
   --color-brand: #d84c4c;
 }
 
 ::selection {
   background-color: #47a3f3;
-  color: #fefefe;
+  color: #110f0f;
 }
 
 :root {
-  --font-inter: 'Inter', sans-serif;
-  --font-fira-code: 'Fira Code', monospace;
   --sh-class: #2d5e9d;
   --sh-identifier: #354150;
   --sh-sign: #8996a3;
@@ -41,6 +40,24 @@ html {
   min-width: 360px;
 }
 
+pre {
+  @apply bg-neutral-50 dark:bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-900 py-2 px-3 text-sm;
+}
+
+code {
+  @apply px-1 py-0.5 rounded-lg;
+}
+
+pre code {
+  @apply p-0;
+  border: initial;
+  line-height: 1.5;
+}
+
+code span {
+  @apply font-medium;
+}
+
 .blog .anchor {
   @apply absolute invisible no-underline;
 
@@ -49,6 +66,20 @@ html {
   width: 80%;
   max-width: 700px;
   cursor: pointer;
+}
+
+.blog {
+  @apply font-serif;
+}
+
+.blog h1,
+.blog h2,
+.blog h3,
+.blog h4,
+.blog h5,
+.blog h6, 
+.blog p {
+  font-feature-settings: 'liga' 1, 'kern' 1;
 }
 
 .anchor:hover {
@@ -66,24 +97,6 @@ html {
 
 .blog *:hover > .anchor {
   @apply visible;
-}
-
-.blog pre {
-  @apply bg-neutral-50 dark:bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-900 py-2 px-3 text-sm;
-}
-
-.blog code {
-  @apply px-1 py-0.5 rounded-lg;
-}
-
-.blog pre code {
-  @apply p-0;
-  border: initial;
-  line-height: 1.5;
-}
-
-.blog code span {
-  @apply font-medium;
 }
 
 .blog img {

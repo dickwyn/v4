@@ -1,15 +1,34 @@
 import './global.css';
 
-import { ReactNode } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
+import { Fira_Code, Inter, Literata } from 'next/font/google';
 import Script from 'next/script';
+import { ReactNode } from 'react';
 
 import Footer from './components/footer';
 import { Navbar } from './components/nav';
 import { SiteInfo } from './components/siteInfo';
 import { baseUrl } from './sitemap';
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
+
+const firaCode = Fira_Code({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-fira-code',
+});
+
+const literata = Literata({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-literata',
+});
 
 const siteName = 'Dickwyn Yong';
 const siteDescription =
@@ -55,7 +74,15 @@ const cx = (...classes) => classes.filter(Boolean).join(' ');
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={cx('text-black bg-white dark:text-white dark:bg-black')}>
+    <html 
+      lang="en" 
+      className={cx(
+        'text-black bg-white dark:text-white dark:bg-black',
+        inter.variable,
+        firaCode.variable,
+        literata.variable
+      )}
+    >
       <head>
         <link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
