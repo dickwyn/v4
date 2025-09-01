@@ -26,6 +26,9 @@ importers:
       '@vercel/speed-insights':
         specifier: ^1.2.0
         version: 1.2.0(next@15.4.6(@babel/core@7.28.3)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)
+      lucide-react:
+        specifier: ^0.542.0
+        version: 0.542.0(react@19.1.0)
       next:
         specifier: 15.4.6
         version: 15.4.6(@babel/core@7.28.3)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -44,6 +47,9 @@ importers:
       shiki:
         specifier: ^3.12.0
         version: 3.12.0
+      simple-icons:
+        specifier: ^15.13.0
+        version: 15.13.0
       tailwindcss:
         specifier: ^4.1.7
         version: 4.1.7
@@ -4279,6 +4285,11 @@ packages:
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0-rc
 
+  lucide-react@0.542.0:
+    resolution: {integrity: sha512-w3hD8/SQB7+lzU2r4VdFyzzOzKnUjTZIF/MQJGSSvni7Llewni4vuViRppfRAa2guOsY5k4jZyxw/i9DQHv+dw==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
+
   lunr@2.3.9:
     resolution: {integrity: sha512-zTU3DaZaF3Rt9rhN3uBMGQD3dD2/vFQqnvZCDv4dl5iOzq2IZQqTxu90r4E5J+nP70J3ilqVCrbho2eWaeW8Ow==}
 
@@ -5607,6 +5618,10 @@ packages:
 
   simple-get@4.0.1:
     resolution: {integrity: sha512-brv7p5WgH0jmQJr1ZDDfKDOSeWWg+OVypG99A/5vYGPqJ6pxiaHLy8nxtFjBA7oMa01ebA9gfh1uMCFqOuXxvA==}
+
+  simple-icons@15.13.0:
+    resolution: {integrity: sha512-Tk3p1Lgmji+8kdUOIvvU3f0loYtWVo/bvO1T82Whpb6BhQ+wM2JR8BaVLQT+TiqqF25DVGrVYXeXrsPo6YDOvg==}
+    engines: {node: '>=0.12.18'}
 
   simple-swizzle@0.2.2:
     resolution: {integrity: sha512-JA//kQgZtbuY83m+xT+tXJkmJncGMTFT+C+g2h2R9uxkYIrE2yy9sgmcLhCnw57/WSD+Eh3J97FPEDFnbXnDUg==}
@@ -11160,6 +11175,10 @@ snapshots:
     dependencies:
       react: 19.1.0
 
+  lucide-react@0.542.0(react@19.1.0):
+    dependencies:
+      react: 19.1.0
+
   lunr@2.3.9: {}
 
   magic-string@0.27.0:
@@ -13146,6 +13165,8 @@ snapshots:
       decompress-response: 6.0.0
       once: 1.4.0
       simple-concat: 1.0.1
+
+  simple-icons@15.13.0: {}
 
   simple-swizzle@0.2.2:
     dependencies:
