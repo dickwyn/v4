@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { CodeBlock } from 'app/components/tina/codeBlock';
 import { Figure } from 'app/components/tina/figure';
 import { Iframe } from 'app/components/tina/iframe';
 import { Tweet } from 'app/components/tina/tweet';
@@ -44,6 +45,9 @@ export const PostEditor = ({ query, variables, data }: PostEditorProps) => {
           <StaticTinaMarkdown
             content={post.body as TinaMarkdownContent | TinaMarkdownContent[]}
             components={{
+              code_block: (props: unknown) => {
+                return <CodeBlock {...(props as React.ComponentProps<typeof CodeBlock>)} />;
+              },
               YouTube: (props: unknown) => (
                 <YouTube {...(props as React.ComponentProps<typeof YouTube>)} className="my-6" />
               ),

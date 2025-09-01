@@ -40,24 +40,20 @@ a {
   }
 }
 
-pre {
-  @apply bg-neutral-50 dark:bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-900 py-2 px-3 text-sm;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+.shiki-container {
+  @apply my-4;
 
-  &::-webkit-scrollbar {
-    display: none;
+  pre {
+    @apply border-0 my-0 p-3;
   }
 
   code {
-    @apply p-0;
-    border: initial;
-    line-height: 1.5;
+    @apply bg-transparent;
   }
 }
 
 code {
-  @apply px-1 py-0.5 rounded-lg;
+  @apply px-1 py-0.5 rounded-lg bg-neutral-100 dark:bg-neutral-800;
 
   span {
     @apply font-medium;
