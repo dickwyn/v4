@@ -23,7 +23,7 @@ const links = [
   {
     href: 'https://www.linkedin.com/in/dickwyn',
     label: 'linkedin',
-    icon: null, // Using Lucide React component instead
+    icon: null, // TODO replace when simple icons adds a linkedin icon
     hoverColor: 'group-hover:text-blue-600',
   },
   {
