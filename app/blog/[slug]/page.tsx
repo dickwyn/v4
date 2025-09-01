@@ -88,26 +88,22 @@ const BlogPage = async ({ params }: Props) => {
         <nav className="mt-12 pt-6 border-t border-neutral-200 dark:border-neutral-800 grid grid-cols-2 gap-4">
           <div>
             {newerPost && (
-              <Link href={`/blog/${newerPost.slug}`} className="group block">
+              <>
                 <span className="block text-xs uppercase tracking-wide text-neutral-500">
                   Newer
                 </span>
-                <span className="block font-medium group-hover:underline text-neutral-900 dark:text-neutral-100">
-                  {newerPost.title}
-                </span>
-              </Link>
+                <Link href={`/blog/${newerPost.slug}`}>{newerPost.title}</Link>
+              </>
             )}
           </div>
           <div className="text-right">
             {olderPost && (
-              <Link href={`/blog/${olderPost.slug}`} className="group inline-block">
+              <>
                 <span className="block text-xs uppercase tracking-wide text-neutral-500">
                   Older
                 </span>
-                <span className="block font-medium group-hover:underline text-neutral-900 dark:text-neutral-100">
-                  {olderPost.title}
-                </span>
-              </Link>
+                <Link href={`/blog/${olderPost.slug}`}>{olderPost.title}</Link>
+              </>
             )}
           </div>
         </nav>

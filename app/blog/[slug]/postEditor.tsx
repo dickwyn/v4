@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { CodeBlock } from 'app/components/tina/codeBlock';
 import { Figure } from 'app/components/tina/figure';
 import { Iframe } from 'app/components/tina/iframe';
 import { Tweet } from 'app/components/tina/tweet';
@@ -24,7 +25,7 @@ export const PostEditor = ({ query, variables, data }: PostEditorProps) => {
   if (!post) return null;
 
   return (
-    <div>
+    <>
       <div className="flex justify-between items-center my-2 text-sm">
         <p
           className="text-sm text-neutral-600 dark:text-neutral-400"
@@ -34,7 +35,7 @@ export const PostEditor = ({ query, variables, data }: PostEditorProps) => {
         </p>
       </div>
       <h1
-        className="title font-semibold text-2xl tracking-tighter"
+        className="text-balance font-semibold text-2xl tracking-tighter"
         data-tina-field={tinaField(post, 'title')}
       >
         {post.title}
@@ -44,6 +45,9 @@ export const PostEditor = ({ query, variables, data }: PostEditorProps) => {
           <StaticTinaMarkdown
             content={post.body as TinaMarkdownContent | TinaMarkdownContent[]}
             components={{
+              code_block: (props: unknown) => {
+                return <CodeBlock {...(props as React.ComponentProps<typeof CodeBlock>)} />;
+              },
               YouTube: (props: unknown) => (
                 <YouTube {...(props as React.ComponentProps<typeof YouTube>)} className="my-6" />
               ),
@@ -60,6 +64,6 @@ export const PostEditor = ({ query, variables, data }: PostEditorProps) => {
           />
         ) : null}
       </article>
-    </div>
+    </>
   );
 };
