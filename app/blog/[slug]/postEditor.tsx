@@ -24,7 +24,7 @@ export const PostEditor = ({ query, variables, data }: PostEditorProps) => {
   if (!post) return null;
 
   return (
-    <div>
+    <>
       <div className="flex justify-between items-center my-2 text-sm">
         <p
           className="text-sm text-neutral-600 dark:text-neutral-400"
@@ -34,7 +34,7 @@ export const PostEditor = ({ query, variables, data }: PostEditorProps) => {
         </p>
       </div>
       <h1
-        className="title font-semibold text-2xl tracking-tighter"
+        className="text-balance font-semibold text-2xl tracking-tighter"
         data-tina-field={tinaField(post, 'title')}
       >
         {post.title}
@@ -60,6 +60,6 @@ export const PostEditor = ({ query, variables, data }: PostEditorProps) => {
           />
         ) : null}
       </article>
-    </div>
+    </>
   );
 };
