@@ -18,7 +18,7 @@ export function Navbar() {
           <div className="flex flex-row space-x-0 pr-10">
             <Link
               href="/"
-              className="home flex items-center py-1 px-2 m-1 hover:bg-black dark:hover:bg-white"
+              className="home flex items-center py-1 px-2 m-1 rounded-md transition-all duration-300 hover:[background-color:var(--color-brand-hover)] hover:shadow-sm"
             >
               <Image
                 src={`/images/brand/logo-${colorScheme}.svg`}
