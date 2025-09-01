@@ -13,6 +13,10 @@
   }
 }
 
+:root {
+  --color-brand-hover: color-mix(in srgb, var(--color-brand) 15%, transparent);
+}
+
 html {
   min-width: 360px;
 }
@@ -29,14 +33,6 @@ a {
 
   &:hover {
     @apply no-underline text-brand;
-  }
-
-  &.blog-link {
-    @apply no-underline;
-
-    &:hover {
-      @apply border-brand;
-    }
   }
 }
 
