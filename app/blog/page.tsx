@@ -12,14 +12,14 @@ const Blog = async () => {
   const postList = await getPostList();
 
   return (
-    <section className="grid gap-8">
+    <section className="grid gap-3">
       {postList
         .filter((post) => !post.draft)
         .map((post) => (
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
-            className="blog-link hover:border-solid border-2 border-transparent rounded-lg"
+            className="block py-4 px-4 -mx-4 border-2 border-transparent rounded-lg !no-underline transition-all duration-200 ease-in-out hover:bg-[var(--color-brand-hover)] hover:transform hover:-translate-y-0.5"
           >
             <div className="">
               <p className="text-sm text-neutral-600 dark:text-neutral-400">

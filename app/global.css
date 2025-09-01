@@ -34,14 +34,6 @@ a {
   &:hover {
     @apply no-underline text-brand;
   }
-
-  &.blog-link {
-    @apply no-underline;
-
-    &:hover {
-      @apply border-brand;
-    }
-  }
 }
 
 .shiki-container {
