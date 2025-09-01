@@ -26,18 +26,18 @@ export const CodeBlock = ({ value, lang }: CodeBlockProps) => {
 
   useEffect(() => {
     const highlightCode = async () => {
-      if (!value || !lang) {
+      if (!value) {
         return;
       }
 
       try {
         const html = await codeToHtml(value.trim(), {
-          lang,
+          lang: lang || 'text',
           theme: isDark ? 'github-dark' : 'github-light',
         });
         setHighlightedHtml(html);
       } catch (error) {
-        console.warn(`Failed to highlight code with language "${lang}":`, error);
+        console.warn(`Failed to highlight code with language "${lang || 'text'}":`, error);
       }
     };
 
