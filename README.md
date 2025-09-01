@@ -1,4 +1,4 @@
-# dickwyn.xyz
+# dickwyn.com
 
 ## Prerequisites
 
