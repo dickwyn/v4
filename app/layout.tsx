@@ -1,11 +1,11 @@
 import './global.css';
 
+import { ReactNode } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
 import { Fira_Code, Inter, Literata } from 'next/font/google';
 import Script from 'next/script';
-import { ReactNode } from 'react';
 
 import Footer from './components/footer';
 import { Navbar } from './components/nav';
@@ -74,8 +74,8 @@ const cx = (...classes) => classes.filter(Boolean).join(' ');
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <html 
-      lang="en" 
+    <html
+      lang="en"
       className={cx(
         'text-black bg-white dark:text-white dark:bg-black',
         inter.variable,
@@ -98,12 +98,14 @@ export default function Layout({ children }: { children: ReactNode }) {
           <Navbar />
           {children}
           <Footer />
-          <Script
-            src="https://analytics.dickwyn.xyz/script.js"
-            data-website-id="a38ba9c3-b3ac-4d35-a975-43dc25892827"
-            strategy="afterInteractive"
-            defer
-          />
+          {process.env.NODE_ENV === 'production' && (
+            <Script
+              src="https://analytics.dickwyn.com/script.js"
+              data-website-id="a38ba9c3-b3ac-4d35-a975-43dc25892827"
+              strategy="afterInteractive"
+              defer
+            />
+          )}
           <Analytics />
           <SpeedInsights />
         </main>
