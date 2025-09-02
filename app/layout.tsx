@@ -101,6 +101,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           <Script
             src="https://analytics.dickwyn.com/script.js"
             data-website-id="a38ba9c3-b3ac-4d35-a975-43dc25892827"
+            data-domains="www.dickwyn.com"
             strategy="afterInteractive"
             defer
           />
