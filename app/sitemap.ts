@@ -1,6 +1,6 @@
 import { getPostList } from './utils/tina';
 
-export const baseUrl = 'https://dickwyn.xyz';
+export const baseUrl = 'https://dickwyn.com';
 
 const sitemap = async () => {
   const postList = (await getPostList()).map((post) => ({
