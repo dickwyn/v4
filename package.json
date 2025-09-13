@@ -1,5 +1,5 @@
 {
-  "name": "www.dickwyn.xyz",
+  "name": "www.dickwyn.com",
   "description": "Dickwyn's website",
   "version": "4.2.2",
   "author": "Dick Wyn Yong <dickwyn@outlook.com>",
@@ -10,7 +10,7 @@
   "bugs": {
     "url": "https://github.com/dickwyn/v4/issues"
   },
-  "homepage": "https://dickwyn.xyz",
+  "homepage": "https://dickwyn.com",
   "scripts": {
     "dev": "tinacms dev -c \"next dev --turbopack\"",
     "build": "tinacms build && next build",
