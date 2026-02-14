@@ -4,7 +4,7 @@ const branch = process.env.VERCEL_GIT_COMMIT_REF || process.env.HEAD || 'main';
 
 export default defineConfig({
   branch,
-  clientId: process.env.TINA_CLIENT_ID,
+  clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID,
   token: process.env.TINA_TOKEN,
   build: {
     outputFolder: 'admin',
@@ -15,6 +15,14 @@ export default defineConfig({
       mediaRoot: 'images',
       publicFolder: 'public',
     },
+  },
+  search: {
+    tina: {
+      indexerToken: process.env.TINA_SEARCH_TOKEN,
+      stopwordLanguages: ['eng'],
+    },
+    indexBatchSize: 100,
+    maxSearchIndexFieldLength: 100,
   },
   schema: {
     collections: [
