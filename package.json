@@ -1,55 +1,55 @@
 {
-  "name": "www.dickwyn.com",
-  "description": "Dickwyn's website",
-  "version": "4.2.2",
-  "author": "Dick Wyn Yong <dickwyn@outlook.com>",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/dickwyn/v4"
-  },
-  "bugs": {
-    "url": "https://github.com/dickwyn/v4/issues"
-  },
-  "homepage": "https://dickwyn.com",
-  "scripts": {
-    "dev": "tinacms dev -c \"next dev --turbopack\"",
-    "build": "tinacms build && next build",
-    "start": "next start",
-    "prettify": "prettier --write \"**/*.{ts,tsx,json,mdx}\"",
-    "lint": "eslint ."
-  },
-  "dependencies": {
-    "@tailwindcss/postcss": "^4.1.7",
-    "@types/node": "22.15.18",
-    "@types/react": "19.1.4",
-    "@types/react-dom": "19.1.5",
-    "@vercel/analytics": "^1.5.0",
-    "@vercel/speed-insights": "^1.2.0",
-    "lucide-react": "^0.542.0",
-    "next": "15.4.10",
-    "next-mdx-remote": "^6.0.0",
-    "postcss": "^8.5.3",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
-    "shiki": "^3.12.0",
-    "simple-icons": "^15.13.0",
-    "tailwindcss": "^4.1.7",
-    "tinacms": "^2.8.2",
-    "typescript": "5.8.3"
-  },
-  "devDependencies": {
-    "@eslint/eslintrc": "^3.3.1",
-    "@eslint/js": "^9.33.0",
-    "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
-    "@next/eslint-plugin-next": "^15.4.6",
-    "@tinacms/cli": "^1.10.2",
-    "eslint": "^9.33.0",
-    "eslint-config-next": "^15.4.6",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "globals": "^16.1.0",
-    "prettier": "^3.6.2",
-    "typescript-eslint": "^8.32.1"
-  }
+	"name": "www.dickwyn.com",
+	"description": "Dickwyn's website",
+	"version": "4.2.2",
+	"author": "Dick Wyn Yong <dickwyn@outlook.com>",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/dickwyn/v4"
+	},
+	"bugs": {
+		"url": "https://github.com/dickwyn/v4/issues"
+	},
+	"homepage": "https://dickwyn.com",
+	"scripts": {
+		"dev": "tinacms dev -c \"next dev --turbopack\"",
+		"build": "tinacms build && next build",
+		"start": "next start",
+		"format": "oxfmt --write '**/*.{ts,tsx,js,mjs,json,mdx}'",
+		"format:check": "oxfmt --check '**/*.{ts,tsx,js,mjs,json,mdx}'",
+		"lint": "oxlint --type-aware --react-plugin --nextjs-plugin --import-plugin --jsx-a11y-plugin"
+	},
+	"dependencies": {
+		"@tailwindcss/postcss": "^4.1.7",
+		"@types/node": "22.15.18",
+		"@types/react": "19.1.4",
+		"@types/react-dom": "19.1.5",
+		"@vercel/analytics": "^1.5.0",
+		"@vercel/speed-insights": "^1.2.0",
+		"lucide-react": "^0.542.0",
+		"next": "15.4.10",
+		"next-mdx-remote": "^6.0.0",
+		"postcss": "^8.5.3",
+		"react": "19.1.0",
+		"react-dom": "19.1.0",
+		"shiki": "^3.12.0",
+		"simple-icons": "^15.13.0",
+		"tailwindcss": "^4.1.7",
+		"tinacms": "^2.8.2",
+		"typescript": "5.8.3"
+	},
+	"devDependencies": {
+		"@tinacms/cli": "^1.10.2",
+		"oxfmt": "^0.32.0",
+		"oxlint": "^1.47.0",
+		"oxlint-tsgolint": "^0.13.0"
+	},
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"better-sqlite3",
+			"esbuild",
+			"@tailwindcss/oxide",
+			"sharp"
+		]
+	}
 }

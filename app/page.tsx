@@ -30,7 +30,10 @@ export default function Page() {
           channel, documenting my journey through the intersection of tech and daily experiences.
         </p>
         <p>
-          beyond work, i&apos;m currently into weightlifting and running as i train my way to a full marathon. my other interests include formula 1, airplanes, credit cards, photography, videography, traveling, and trying out new food spots - basically anything that mixes curiosity with a bit of adventure.
+          beyond work, i&apos;m currently into weightlifting and running as i train my way to a full
+          marathon. my other interests include formula 1, airplanes, credit cards, photography,
+          videography, traveling, and trying out new food spots - basically anything that mixes
+          curiosity with a bit of adventure.
         </p>
       </section>
     </section>

@@ -6,9 +6,13 @@ export interface IframeProps {
   className?: string;
 }
 
-export const Iframe = (
-  { src, title = 'Embedded content', height = 400, allowFullscreen = true, className }: IframeProps
-) => {
+export const Iframe = ({
+  src,
+  title = 'Embedded content',
+  height = 400,
+  allowFullscreen = true,
+  className,
+}: IframeProps) => {
   if (!src) return <p>No src provided</p>;
 
   return (

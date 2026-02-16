@@ -1,0 +1,26 @@
+{
+	"$schema": "./node_modules/oxfmt/configuration_schema.json",
+	"endOfLine": "lf",
+	"semi": true,
+	"singleQuote": true,
+	"tabWidth": 2,
+	"trailingComma": "es5",
+	"printWidth": 100,
+	"importOrder": [
+		"^react$",
+		"<BUILTIN_MODULES>",
+		"<THIRD_PARTY_MODULES>",
+		"",
+		"^[.]"
+	],
+	"importOrderParserPlugins": [
+		"typescript",
+		"jsx"
+	],
+	"importOrderTypeScriptVersion": "5.3.3",
+	"experimentalSortPackageJson": false,
+	"ignorePatterns": [
+		"tina/tina-lock.json",
+		"tina/__generated__/**"
+	]
+}

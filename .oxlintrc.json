@@ -1,0 +1,81 @@
+{
+	"$schema": "./node_modules/oxlint/configuration_schema.json",
+	"plugins": [
+		"react",
+		"typescript",
+		"unicorn",
+		"import",
+		"nextjs",
+		"jsx-a11y",
+		"oxc"
+	],
+	"categories": {
+		"correctness": "error",
+		"suspicious": "warn",
+		"perf": "warn",
+		"style": "warn"
+	},
+	"rules": {
+		"no-console": "warn",
+		"no-debugger": "error",
+		"react/react-in-jsx-scope": "off",
+		"react/prop-types": "off",
+		"react/jsx-max-depth": "off",
+		"react/iframe-missing-sandbox": "off",
+		"unicorn/filename-case": "off",
+		"unicorn/prefer-node-protocol": "off",
+		"typescript/await-thenable": "error",
+		"typescript/no-floating-promises": "error",
+		"typescript/no-misused-promises": "error",
+		"typescript/no-for-in-array": "error",
+		"typescript/no-implied-eval": "error",
+		"typescript/no-unnecessary-type-assertion": "error",
+		"typescript/restrict-plus-operands": "error",
+		"typescript/restrict-template-expressions": "error",
+		"typescript/unbound-method": "error",
+		"typescript/require-await": "error",
+		"typescript/only-throw-error": "error",
+		"typescript/no-mixed-enums": "error",
+		"typescript/no-unsafe-argument": "warn",
+		"typescript/no-unsafe-assignment": "warn",
+		"typescript/no-unsafe-call": "warn",
+		"typescript/no-unsafe-member-access": "warn",
+		"typescript/no-unsafe-return": "warn",
+		"typescript/no-unnecessary-condition": "warn",
+		"typescript/no-unnecessary-boolean-literal-compare": "warn",
+		"typescript/no-unnecessary-type-arguments": "warn",
+		"typescript/no-confusing-void-expression": "warn",
+		"typescript/prefer-nullish-coalescing": "warn",
+		"typescript/prefer-optional-chain": "warn",
+		"typescript/no-base-to-string": "warn",
+		"typescript/switch-exhaustiveness-check": "warn"
+	},
+	"settings": {
+		"next": {
+			"rootDir": [
+				"."
+			]
+		},
+		"react": {
+			"formComponents": [],
+			"linkComponents": [],
+			"version": "19.1",
+			"componentWrapperFunctions": []
+		}
+	},
+	"env": {
+		"builtin": true
+	},
+	"globals": {
+		"React": "readonly",
+		"JSX": "readonly"
+	},
+	"ignorePatterns": [
+		".next/",
+		"node_modules/",
+		"dist/",
+		"build/",
+		"public/admin/",
+		"tina/__generated__/"
+	]
+}
