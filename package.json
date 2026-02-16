@@ -2,6 +2,7 @@
 	"name": "www.dickwyn.com",
 	"description": "Dickwyn's website",
 	"version": "4.2.2",
+	"packageManager": "pnpm@10.28.2",
 	"author": "Dick Wyn Yong <dickwyn@outlook.com>",
 	"repository": {
 		"type": "git",
