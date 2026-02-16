@@ -7,7 +7,9 @@
       "patch": "1"
     },
     "meta": {
-      "flags": ["experimentalData"]
+      "flags": [
+        "experimentalData"
+      ]
     },
     "collections": [
       {
@@ -22,7 +24,10 @@
             "label": "Title",
             "isTitle": true,
             "required": true,
-            "namespace": ["post", "title"],
+            "namespace": [
+              "post",
+              "title"
+            ],
             "searchable": true,
             "uid": false
           },
@@ -31,7 +36,10 @@
             "name": "date",
             "label": "Date",
             "required": true,
-            "namespace": ["post", "date"],
+            "namespace": [
+              "post",
+              "date"
+            ],
             "searchable": true,
             "uid": false
           },
@@ -42,7 +50,10 @@
             "ui": {
               "component": "textarea"
             },
-            "namespace": ["post", "description"],
+            "namespace": [
+              "post",
+              "description"
+            ],
             "searchable": true,
             "uid": false
           },
@@ -51,7 +62,10 @@
             "name": "slug",
             "label": "Slug",
             "required": true,
-            "namespace": ["post", "slug"],
+            "namespace": [
+              "post",
+              "slug"
+            ],
             "searchable": true,
             "uid": false
           },
@@ -59,7 +73,10 @@
             "type": "string",
             "name": "subtitle",
             "label": "Subtitle",
-            "namespace": ["post", "subtitle"],
+            "namespace": [
+              "post",
+              "subtitle"
+            ],
             "searchable": true,
             "uid": false
           },
@@ -67,7 +84,10 @@
             "type": "image",
             "name": "image",
             "label": "Image",
-            "namespace": ["post", "image"],
+            "namespace": [
+              "post",
+              "image"
+            ],
             "searchable": false,
             "uid": false
           },
@@ -76,7 +96,10 @@
             "name": "draft",
             "label": "Draft",
             "description": "If this is checked the post will not be published",
-            "namespace": ["post", "draft"],
+            "namespace": [
+              "post",
+              "draft"
+            ],
             "searchable": true,
             "uid": false
           },
@@ -95,7 +118,12 @@
                     "name": "id",
                     "label": "Video ID",
                     "required": true,
-                    "namespace": ["post", "body", "YouTube", "id"],
+                    "namespace": [
+                      "post",
+                      "body",
+                      "YouTube",
+                      "id"
+                    ],
                     "searchable": true,
                     "uid": false
                   },
@@ -104,7 +132,12 @@
                     "name": "title",
                     "label": "Title",
                     "required": false,
-                    "namespace": ["post", "body", "YouTube", "title"],
+                    "namespace": [
+                      "post",
+                      "body",
+                      "YouTube",
+                      "title"
+                    ],
                     "searchable": true,
                     "uid": false
                   },
@@ -113,7 +146,12 @@
                     "name": "start",
                     "label": "Start time (seconds)",
                     "required": false,
-                    "namespace": ["post", "body", "YouTube", "start"],
+                    "namespace": [
+                      "post",
+                      "body",
+                      "YouTube",
+                      "start"
+                    ],
                     "searchable": true,
                     "uid": false
                   },
@@ -122,12 +160,21 @@
                     "name": "className",
                     "label": "Class Name",
                     "required": false,
-                    "namespace": ["post", "body", "YouTube", "className"],
+                    "namespace": [
+                      "post",
+                      "body",
+                      "YouTube",
+                      "className"
+                    ],
                     "searchable": true,
                     "uid": false
                   }
                 ],
-                "namespace": ["post", "body", "YouTube"]
+                "namespace": [
+                  "post",
+                  "body",
+                  "YouTube"
+                ]
               },
               {
                 "name": "Iframe",
@@ -138,7 +185,12 @@
                     "name": "src",
                     "label": "Src URL",
                     "required": true,
-                    "namespace": ["post", "body", "Iframe", "src"],
+                    "namespace": [
+                      "post",
+                      "body",
+                      "Iframe",
+                      "src"
+                    ],
                     "searchable": true,
                     "uid": false
                   },
@@ -147,7 +199,12 @@
                     "name": "title",
                     "label": "Title",
                     "required": false,
-                    "namespace": ["post", "body", "Iframe", "title"],
+                    "namespace": [
+                      "post",
+                      "body",
+                      "Iframe",
+                      "title"
+                    ],
                     "searchable": true,
                     "uid": false
                   },
@@ -156,7 +213,12 @@
                     "name": "height",
                     "label": "Height (px)",
                     "required": false,
-                    "namespace": ["post", "body", "Iframe", "height"],
+                    "namespace": [
+                      "post",
+                      "body",
+                      "Iframe",
+                      "height"
+                    ],
                     "searchable": true,
                     "uid": false
                   },
@@ -165,7 +227,12 @@
                     "name": "allowFullscreen",
                     "label": "Allow Fullscreen",
                     "required": false,
-                    "namespace": ["post", "body", "Iframe", "allowFullscreen"],
+                    "namespace": [
+                      "post",
+                      "body",
+                      "Iframe",
+                      "allowFullscreen"
+                    ],
                     "searchable": true,
                     "uid": false
                   },
@@ -174,12 +241,21 @@
                     "name": "className",
                     "label": "Class Name",
                     "required": false,
-                    "namespace": ["post", "body", "Iframe", "className"],
+                    "namespace": [
+                      "post",
+                      "body",
+                      "Iframe",
+                      "className"
+                    ],
                     "searchable": true,
                     "uid": false
                   }
                 ],
-                "namespace": ["post", "body", "Iframe"]
+                "namespace": [
+                  "post",
+                  "body",
+                  "Iframe"
+                ]
               },
               {
                 "name": "Tweet",
@@ -190,7 +266,12 @@
                     "name": "id",
                     "label": "Tweet ID",
                     "required": true,
-                    "namespace": ["post", "body", "Tweet", "id"],
+                    "namespace": [
+                      "post",
+                      "body",
+                      "Tweet",
+                      "id"
+                    ],
                     "searchable": true,
                     "uid": false
                   },
@@ -199,7 +280,12 @@
                     "name": "className",
                     "label": "Class Name",
                     "required": false,
-                    "namespace": ["post", "body", "Tweet", "className"],
+                    "namespace": [
+                      "post",
+                      "body",
+                      "Tweet",
+                      "className"
+                    ],
                     "searchable": true,
                     "uid": false
                   },
@@ -218,7 +304,12 @@
                       }
                     ],
                     "required": false,
-                    "namespace": ["post", "body", "Tweet", "theme"],
+                    "namespace": [
+                      "post",
+                      "body",
+                      "Tweet",
+                      "theme"
+                    ],
                     "searchable": true,
                     "uid": false
                   },
@@ -227,7 +318,12 @@
                     "name": "lang",
                     "label": "Language (e.g. en, es)",
                     "required": false,
-                    "namespace": ["post", "body", "Tweet", "lang"],
+                    "namespace": [
+                      "post",
+                      "body",
+                      "Tweet",
+                      "lang"
+                    ],
                     "searchable": true,
                     "uid": false
                   },
@@ -236,12 +332,21 @@
                     "name": "height",
                     "label": "Height (px)",
                     "required": false,
-                    "namespace": ["post", "body", "Tweet", "height"],
+                    "namespace": [
+                      "post",
+                      "body",
+                      "Tweet",
+                      "height"
+                    ],
                     "searchable": true,
                     "uid": false
                   }
                 ],
-                "namespace": ["post", "body", "Tweet"]
+                "namespace": [
+                  "post",
+                  "body",
+                  "Tweet"
+                ]
               },
               {
                 "name": "Figure",
@@ -252,7 +357,12 @@
                     "name": "src",
                     "label": "Image URL",
                     "required": true,
-                    "namespace": ["post", "body", "Figure", "src"],
+                    "namespace": [
+                      "post",
+                      "body",
+                      "Figure",
+                      "src"
+                    ],
                     "searchable": true,
                     "uid": false
                   },
@@ -261,7 +371,12 @@
                     "name": "alt",
                     "label": "Alt text",
                     "required": false,
-                    "namespace": ["post", "body", "Figure", "alt"],
+                    "namespace": [
+                      "post",
+                      "body",
+                      "Figure",
+                      "alt"
+                    ],
                     "searchable": true,
                     "uid": false
                   },
@@ -270,7 +385,12 @@
                     "name": "caption",
                     "label": "Caption",
                     "required": false,
-                    "namespace": ["post", "body", "Figure", "caption"],
+                    "namespace": [
+                      "post",
+                      "body",
+                      "Figure",
+                      "caption"
+                    ],
                     "searchable": true,
                     "uid": false
                   },
@@ -279,15 +399,27 @@
                     "name": "className",
                     "label": "Class Name",
                     "required": false,
-                    "namespace": ["post", "body", "Figure", "className"],
+                    "namespace": [
+                      "post",
+                      "body",
+                      "Figure",
+                      "className"
+                    ],
                     "searchable": true,
                     "uid": false
                   }
                 ],
-                "namespace": ["post", "body", "Figure"]
+                "namespace": [
+                  "post",
+                  "body",
+                  "Figure"
+                ]
               }
             ],
-            "namespace": ["post", "body"],
+            "namespace": [
+              "post",
+              "body"
+            ],
             "searchable": true,
             "parser": {
               "type": "mdx"
@@ -296,7 +428,9 @@
           }
         ],
         "ui": {},
-        "namespace": ["post"]
+        "namespace": [
+          "post"
+        ]
       }
     ],
     "config": {
@@ -312,7 +446,9 @@
     "DocumentConnection": {
       "type": "DocumentConnection",
       "resolveType": "multiCollectionDocumentList",
-      "collections": ["post"]
+      "collections": [
+        "post"
+      ]
     },
     "Node": {
       "type": "Node",
