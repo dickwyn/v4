@@ -41,7 +41,7 @@ export const CodeBlock = ({ value, lang }: CodeBlockProps) => {
       }
     };
 
-    highlightCode();
+    void highlightCode();
   }, [value, lang, isDark]);
 
   return (

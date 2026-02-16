@@ -5,16 +5,15 @@
     "ghcr.io/devcontainers/features/github-cli:1": {}
   },
   "forwardPorts": [3000],
-  "postCreateCommand": "git config --global url.'https://github.com/'.insteadOf 'git@github.com:' && git config --global user.name 'dickwyn' && git config --global user.email 'dickwyn@outlook.com' && pnpm install",
+  "postCreateCommand": "git config --global url.'https://github.com/'.insteadOf 'git@github.com:' && git config --global user.name 'dickwyn' && git config --global user.email 'dickwyn@outlook.com' && pnpm install && echo '\nalias c=\"clear\"\nalias branch=\"git checkout -b\"\nalias publish=\"git push -u origin HEAD\"\nalias delete=\"git branch -d\"\n' >> ~/.zshrc",
   "customizations": {
     "vscode": {
       "extensions": [
-        "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode",
+        "oxc.oxc-vscode",
         "bradlc.vscode-tailwindcss"
       ],
       "settings": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.defaultFormatter": "oxc.oxc-vscode",
         "editor.formatOnSave": true,
         "terminal.integrated.defaultProfile.linux": "zsh"
       }

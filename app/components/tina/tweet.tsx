@@ -6,9 +6,13 @@ export interface TweetProps {
   height?: number;
 }
 
-export const Tweet = (
-  { id, className, theme = 'light', lang = 'en', height = 600 }: TweetProps
-) => {
+export const Tweet = ({
+  id,
+  className,
+  theme = 'light',
+  lang = 'en',
+  height = 600,
+}: TweetProps) => {
   if (!id) return <p>No id provided</p>;
 
   return (
